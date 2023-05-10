@@ -29,6 +29,7 @@ export default function Form() {
   ];
   return (
     <div>
+      {/* Drop down for models */}
        <Dropdown menu={{ items }} trigger={["click"]}>
          <a onClick={(e) => e.preventDefault()}>
            <Space>
@@ -37,8 +38,14 @@ export default function Form() {
            </Space>
          </a>
        </Dropdown>
+       
+       {/* text area for prompts */}
        <TextArea rows={4} />
+       
+       {/* slider for sampling steps */}
        <Slider defaultValue={30} min={0} max={150}/>
+       
+       {/* dropdown for sampling methods */}
        <Dropdown menu={{ items }} trigger={["click"]}>
          <a onClick={(e) => e.preventDefault()}>
            <Space>
@@ -47,7 +54,11 @@ export default function Form() {
            </Space>
          </a>
        </Dropdown>
-       <Checkbox onChange={onChange}>Checkbox</Checkbox>
+       
+       {/* check box for restore faces */}
+       <Checkbox onChange={onChange}>
+        Restore Faces
+       </Checkbox>
     </div>
   )
 }
