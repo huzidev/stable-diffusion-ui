@@ -59,6 +59,12 @@ export default function Form() {
        <Checkbox onChange={onChange}>
         Restore Faces
        </Checkbox>
+
+       {/* slider for width */}
+       <Slider defaultValue={512} min={256} max={768}/>
+       
+       {/* slider for height */}
+       <Slider defaultValue={512} min={256} max={768}/>
     </div>
   )
 }
