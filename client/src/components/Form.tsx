@@ -1,9 +1,14 @@
 import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Dropdown, Input, Slider, Space } from "antd";
+import { Checkbox, Dropdown, Input, Slider, Space } from "antd";
+import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 
 export default function Form() {
   const { TextArea } = Input;
+
+  const onChange = (e: CheckboxChangeEvent) => {
+    console.log(`checked = ${e.target.checked}`);
+  };
 
   const items: MenuProps["items"] = [
     {
@@ -27,13 +32,22 @@ export default function Form() {
        <Dropdown menu={{ items }} trigger={["click"]}>
          <a onClick={(e) => e.preventDefault()}>
            <Space>
-             Click me
+             Select Models
              <DownOutlined />
            </Space>
          </a>
        </Dropdown>
        <TextArea rows={4} />
        <Slider defaultValue={30} min={0} max={150}/>
+       <Dropdown menu={{ items }} trigger={["click"]}>
+         <a onClick={(e) => e.preventDefault()}>
+           <Space>
+             Sampling Methods
+             <DownOutlined />
+           </Space>
+         </a>
+       </Dropdown>
+       <Checkbox onChange={onChange}>Checkbox</Checkbox>
     </div>
   )
 }
