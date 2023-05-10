@@ -36,6 +36,7 @@ export default function Form() {
          </a>
        </Dropdown>
        
+       {/* Generate Image button */}
       <Button type="primary" size={'large'}>
         Generate
       </Button>
