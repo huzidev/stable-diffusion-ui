@@ -1,8 +1,8 @@
 import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Checkbox, Dropdown, Input, Slider, Space, Typography } from "antd";
+import { Button, Checkbox, Dropdown, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
-
+ 
 export default function Form() {
   const { TextArea } = Input;
 
@@ -20,9 +20,6 @@ export default function Form() {
       key: "1",
     },
     {
-      type: "divider",
-    },
-    {
       label: "3rd menu item",
       key: "3",
     },
@@ -38,6 +35,10 @@ export default function Form() {
            </Space>
          </a>
        </Dropdown>
+       
+      <Button type="primary" size={'large'}>
+        Generate
+      </Button>
        
        {/* text area for prompts */}
        <TextArea rows={4} />
