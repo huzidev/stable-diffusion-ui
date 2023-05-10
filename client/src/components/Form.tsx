@@ -1,6 +1,6 @@
 import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Checkbox, Dropdown, Input, Slider, Space } from "antd";
+import { Checkbox, Dropdown, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 
 export default function Form() {
@@ -60,11 +60,31 @@ export default function Form() {
         Restore Faces
        </Checkbox>
 
+      <br />
        {/* slider for width */}
+       <Typography.Text>
+        Width
+       </Typography.Text>
        <Slider defaultValue={512} min={256} max={768}/>
        
        {/* slider for height */}
+       <Typography.Text>
+        height
+       </Typography.Text>
        <Slider defaultValue={512} min={256} max={768}/>
+
+       {/* batch count */}
+       <Typography.Text>
+        Batch Count
+       </Typography.Text>
+       <Slider defaultValue={1} min={1} max={5}/>
+
+      {/* CFG scale */}
+      <Typography.Text>
+        CFG Scale
+       </Typography.Text>
+       <Slider defaultValue={7} min={1} max={30} step={0.5}/>
     </div>
   )
+
 }
