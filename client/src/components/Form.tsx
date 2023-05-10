@@ -1,6 +1,6 @@
 import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Dropdown, Input, Space } from "antd";
+import { Dropdown, Input, Slider, Space } from "antd";
 
 export default function Form() {
   const { TextArea } = Input;
@@ -33,6 +33,7 @@ export default function Form() {
          </a>
        </Dropdown>
        <TextArea rows={4} />
+       <Slider defaultValue={30} min={0} max={150}/>
     </div>
   )
 }
