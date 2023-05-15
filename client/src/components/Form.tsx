@@ -120,12 +120,13 @@ export default function Form(): JSX.Element {
        <Image
           preview={{ visible: false }}
           width={200}
-          src="/images/1684145516113.png"
+          src={`/images/${latestImage}`}
           onClick={() => setVisible(true)}
         />
         <div style={{ display: 'none' }}>
           <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis)}}>
-            <Image src="/images/1684145516113.png" />
+            {/* <Image src="/images/1684145516113.png" /> */}
+            {latestImage && <Image src={`/images/${latestImage}`} />}
           </Image.PreviewGroup>
         </div>
     </div>
