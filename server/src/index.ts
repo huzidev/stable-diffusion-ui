@@ -1,6 +1,7 @@
 import axios from "axios";
 import cors from "cors";
 import express, { Request, Response } from 'express';
+import path from "path";
 const server = express();
 
 const port = 8080;
@@ -35,10 +36,12 @@ server.use(cors({
 
 async function gen() {
     try {
+        const filename = Date.now();
         const result = await axios(config);
         const { images, info } = result.data;
         for (const image of images) {
             const buffer = Buffer.from(image, "base64");
+            const imgPath = path.join(`images/`, `${filename}.png`)
         }
         console.log("Res", result);
     } catch (e) {
