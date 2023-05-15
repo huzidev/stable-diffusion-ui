@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
-import { DataType as Type } from "./types";
+import { DataType as Type } from "./Types";
  
 export default function Form(): JSX.Element {
   const { TextArea } = Input;
@@ -63,10 +63,10 @@ export default function Form(): JSX.Element {
        
        {/* text area for prompts */}
        <TextArea 
-        name = "text"
-        value = {text}
+        name="text"
+        value={text}
         onChange={inputHandler}
-        
+        placeholder="Enter yours prompt"
         rows={4} 
        />
        
