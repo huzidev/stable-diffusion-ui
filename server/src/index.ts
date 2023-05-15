@@ -20,14 +20,14 @@ server.get("/get", (req: Request, res: Response) => {
     res.status(200).send("HEllo");
 })
 
-let latestImage: any = "";
 
+let latestImage: any = "";
 server.post("/test", (req: Request, res: Response) => {
     const { prompt } = req.body;
     console.log("resp", prompt);
     var data = JSON.stringify({
         prompt,
-        "steps": 5,
+        "steps": 20,
         "cfg_scale": 7,
         "sampler_name": "Heun",
         "batch_size": 1,
@@ -53,29 +53,23 @@ server.post("/test", (req: Request, res: Response) => {
                 const buffer = Buffer.from(image, "base64");
                 const imgPath = path.join(`images`, `${filename}.png`);
                 fs.writeFileSync(imgPath, buffer);
-                latestImage = imgPath;
+                latestImage = `${filename}.png`;
                 console.log("latest image name", latestImage);
-                
             }
-            console.log("Res", result);
         } catch (e) {
             console.log("Error", e);
             
         }
     }
     gen();
-    console.log("data", data);
     res.status(200).send({ message: "Image generated succescully!" });
 })
 
 server.get("/latest-img", (req: Request, res: Response) => {
     res.status(202).json({ image: latestImage })
-    console.log("latest image added");
-    
 })
 
-// const showImg = path.join(__dirname, "images");
-// server.use("/images", express.static(showImg));
+server.use("/images", express.static("images"));
 
 server.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
