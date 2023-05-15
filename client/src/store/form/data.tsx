@@ -24,7 +24,7 @@ export const generateImg = createAsyncThunk('form/data', async (prompt: any) => 
         
         const config = {
             method: 'post',
-            url: "http://localhost:8080/test",
+            url: "http://localhost:8080/generate",
             headers: {
                 'Content-Type': 'application/json'
             },
