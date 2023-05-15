@@ -14,7 +14,7 @@ var data = JSON.stringify({
 
 const config = {
     method: 'post',
-    url: 'http://127.0.0.1:7860/sdapi/v1/txt2img',
+    url: 'http://localhost:3000/test',
     headers: {
         'Content-Type': 'application/json'
     },

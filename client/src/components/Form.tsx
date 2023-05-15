@@ -2,8 +2,8 @@ import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Checkbox, Dropdown, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
+import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
  
 export default function Form(): JSX.Element {
@@ -30,10 +30,9 @@ export default function Form(): JSX.Element {
     },
   ];
 
-  function generate() {
-    dispatch(generateImg());
-    Navigate("/test");
-    console.log("will");
+  async function generate() {
+    const result = axios.post("http://localhost:8080/test")
+    console.log("resukt", result);
   }
 
   return (
