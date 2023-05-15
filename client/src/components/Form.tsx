@@ -107,6 +107,7 @@ export default function Form(): JSX.Element {
        <Button onClick={generate}>
         Generate Image
        </Button>
+       
     </div>
   )
 

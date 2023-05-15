@@ -8,11 +8,12 @@ import axios from "axios";
 // }
 
 
-export const generateImg = createAsyncThunk('form/data', async (prompts) => {
+export const generateImg = createAsyncThunk('form/data', async (prompt: any) => {
+    const { prompts } = prompt;
     try {
         console.log("prompt from redux", prompts);
         var data = JSON.stringify({
-            "prompt": prompt
+            "prompt": prompts
             // "steps": 20,
             // "cfg_scale": 7,
             // "sampler_name": "Heun",
