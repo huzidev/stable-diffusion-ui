@@ -26,6 +26,6 @@ const config = {
 export const generateImg = createAsyncThunk('form/data', async () => {
     console.log("prompt from redux", prompts);
     const res = await axios(config);
-    console.log("generate image");
+    console.log("generating image");
     console.log("Res from redux", res);
 })
