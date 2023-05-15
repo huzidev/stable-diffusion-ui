@@ -83,7 +83,13 @@ server.get("/models", (req: Request, res: Response) => {
 
     async function getModels() {
         const res = await axios(config);
-        console.log("Result", res.data);
+        let models = res.data;
+        console.log("Result", models);
+        let newArr: any = [];
+        models.forEach((obj: any) => {
+            newArr.push(obj.model_name);
+        });
+        console.log("newArr", newArr);
     }
     getModels();
     } catch (e) {
