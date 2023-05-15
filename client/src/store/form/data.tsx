@@ -16,7 +16,7 @@ var data = JSON.stringify({
 
 const config = {
     method: 'post',
-    url: '"http://localhost:8080/test"',
+    url: "http://localhost:8080/test",
     headers: {
         'Content-Type': 'application/json'
     },
@@ -27,5 +27,5 @@ export const generateImg = createAsyncThunk('form/data', async () => {
     console.log("prompt from redux", prompts);
     const res = await axios(config);
     console.log("generate image");
-    console.log(res);
+    console.log("Res from redux", res);
 })
