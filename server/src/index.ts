@@ -63,6 +63,8 @@ server.post("/test", (req: Request, res: Response) => {
     res.status(200).send({ message: "Image generated succescully!" });
 })
 
+let latestImage: string = "";
+
 const showImg = path.join(__dirname, "images");
 server.use("/images", express.static(showImg));
 
