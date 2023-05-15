@@ -81,7 +81,7 @@ server.get("/models", (req: Request, res: Response) => {
         }
     };
 
-    async function getModels(params:type) {
+    async function getModels() {
         const res = await axios(config);
         
     }
