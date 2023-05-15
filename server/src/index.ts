@@ -71,6 +71,12 @@ server.get("/latest-img", (req: Request, res: Response) => {
 
 server.use("/images", express.static("images"));
 
+server.get("/models", (req: Request, res: Response) => {
+
+})
+
+
+
 server.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 })
