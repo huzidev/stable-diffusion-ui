@@ -63,7 +63,8 @@ server.post("/test", (req: Request, res: Response) => {
     res.status(200).send({ message: "Image generated succescully!" });
 })
 
-server.use("/images")
+const showImg = path.join(__dirname, "images");
+server.use("/images", express.static(showImg));
 
 server.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
