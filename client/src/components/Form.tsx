@@ -27,7 +27,7 @@ export default function Form(): JSX.Element {
   ];
 
   let name, value;
-  function inputHandler(e: React.ChangeEvent<HTMLInputElement>) {
+  function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     name = e.target.value;
     value = e.target.value;
     setPrompt({
@@ -65,6 +65,8 @@ export default function Form(): JSX.Element {
        <TextArea 
         name = "text"
         value = {text}
+        onChange={inputHandler}
+        
         rows={4} 
        />
        
