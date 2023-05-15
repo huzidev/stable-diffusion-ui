@@ -22,6 +22,9 @@ export default function Form(): JSX.Element {
       });
   }, [])
 
+  console.log("front-end image", latestImage);
+  
+
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
   };
@@ -45,6 +48,9 @@ export default function Form(): JSX.Element {
   async function generate() {
     dispatch(generateImg(prompt));
   }
+
+  console.log("image", `http://localhost:8080/images/${latestImage}`);
+  
 
   return (
     <div>
@@ -121,14 +127,15 @@ export default function Form(): JSX.Element {
         <Image
             preview={{ visible: false }}
             width={200}
-            src={`http://localhost:8080/${latestImage}`}
+            // src={`http://localhost:8080/uploads/${latestImage}`}
+            src={`http://localhost:8080/images/${latestImage}`}
             onClick={() => setVisible(true)}
           />
        }
         <div style={{ display: 'none' }}>
           <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis)}}>
             {/* <Image src="/images/1684145516113.png" /> */}
-            {latestImage && <Image src={`http://localhost:8080/${latestImage}`} />}
+            {latestImage && <Image src={`http://localhost:8080/images/${latestImage}`} />}
           </Image.PreviewGroup>
         </div>
     </div>
