@@ -65,7 +65,6 @@ export default function Form(): JSX.Element {
        <TextArea 
         name = "text"
         value = {text}
-
         rows={4} 
        />
        
