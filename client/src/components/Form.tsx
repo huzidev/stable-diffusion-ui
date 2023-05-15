@@ -10,7 +10,7 @@ import { DataType as Type } from "./types";
  
 export default function Form(): JSX.Element {
   const { TextArea } = Input;
-  const [prompt, setPrompt] = useState<Type>({ prompt: "" })
+  const [prompt, setPrompt] = useState<Type>({ data: "" })
   const dispatch = useAppDispatch();
   const Navigate = useNavigate();
 
@@ -27,8 +27,13 @@ export default function Form(): JSX.Element {
 
   let name, value;
   function inputHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    
-  }
+    name = e.target.value;
+    value = e.target.value;
+    setPrompt({
+      ...prompt,
+      [name]: value
+    });
+  };
 
   async function generate() {
     const result = axios.post("http://localhost:8080/test")
