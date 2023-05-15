@@ -109,6 +109,9 @@ server.get("/methods", (req: Request, res: Response) => {
             const res = await axios(config);
             let samples = res.data;
             let newArr = [];
+            samples.forEach((obj) => {
+                newArr.push(obj.name)
+            })
         }
     } catch (e) {
         console.log("Error", e);
