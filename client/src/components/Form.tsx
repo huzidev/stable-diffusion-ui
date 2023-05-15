@@ -3,11 +3,14 @@ import type { MenuProps } from "antd";
 import { Button, Checkbox, Dropdown, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from "../store/hooks/hooks";
+import { DataType as Type } from "./types";
  
 export default function Form(): JSX.Element {
   const { TextArea } = Input;
+  const [prompt, setPrompt] = useState<Type>({ prompt: "" })
   const dispatch = useAppDispatch();
   const Navigate = useNavigate();
 
@@ -19,16 +22,13 @@ export default function Form(): JSX.Element {
     {
       label: <a href="https://www.antgroup.com">1st menu item</a>,
       key: "0",
-    },
-    {
-      label: <a href="https://www.aliyun.com">2nd menu item</a>,
-      key: "1",
-    },
-    {
-      label: "3rd menu item",
-      key: "3",
-    },
+    }
   ];
+
+  let name, value;
+  function inputHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    
+  }
 
   async function generate() {
     const result = axios.post("http://localhost:8080/test")
