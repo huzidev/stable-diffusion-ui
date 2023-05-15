@@ -36,12 +36,12 @@ server.use(cors({
 
 async function gen() {
     try {
-        const filename = Date.now();
         const result = await axios(config);
         const { images, info } = result.data;
+        const filename = Date.now();
         for (const image of images) {
             const buffer = Buffer.from(image, "base64");
-            const imgPath = path.join(`images/`, `${filename}.png`)
+            const imgPath = path.join(`images/`, `${filename}.png`);
         }
         console.log("Res", result);
     } catch (e) {
