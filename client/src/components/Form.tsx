@@ -55,7 +55,6 @@ export default function Form(): JSX.Element {
   function getAllMethods() {
     dispatch(getMethods());
   }
-
   
   return (
     <div>
@@ -145,6 +144,9 @@ export default function Form(): JSX.Element {
         </div>
         <Button onClick={getAllModels}>
           Get models
+        </Button>
+        <Button onClick={getAllMethods}>
+          Get Methods
         </Button>
     </div>
   )
