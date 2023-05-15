@@ -51,8 +51,6 @@ export default function Form(): JSX.Element {
     dispatch(getModels());
   }
 
-  console.log("image", `http://localhost:8080/images/${latestImage}`);
-  
   return (
     <div>
       {/* Drop down for models */}
