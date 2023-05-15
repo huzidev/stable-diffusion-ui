@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import imageReducer from "./form/data";
 
 const store = configureStore({
     reducer : {
-        
+        image: imageReducer
     }
 })
 

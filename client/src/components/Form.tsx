@@ -33,7 +33,7 @@ export default function Form(): JSX.Element {
   const { prompts } = prompt;
 
   async function generate() {
-    dispatch(generateImg());
+    dispatch(generateImg(prompt));
   }
 
   return (
