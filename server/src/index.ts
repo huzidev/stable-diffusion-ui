@@ -1,6 +1,7 @@
+import bodyParser from "body-parser";
 import cors from "cors";
-import express, { Request, Response } from 'express';
-const server = express();
+import express, { Express, Request, Response } from 'express';
+const server: Express  = express();
 
 const port = 8080;
 
@@ -8,14 +9,17 @@ server.use(cors({
     origin: "*"
 }));
 
+server.use(express.json());
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended : true }));
+
 server.get("/get", (req: Request, res: Response) => {
     res.status(200).send("HEllo");
-    
 })
 
 server.post("/test", (req: Request, res: Response) => {
-    const resp = req.body;
-    console.log("res", resp);
+    // const resp = req.body;
+    console.log("req body", req.body);
     // var data = JSON.stringify({
     //     "prompt": prompts,
     //     "steps": 30,
