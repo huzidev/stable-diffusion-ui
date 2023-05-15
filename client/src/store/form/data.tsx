@@ -11,7 +11,6 @@ import axios from "axios";
 export const generateImg = createAsyncThunk('form/data', async (prompt: any) => {
     const { prompts } = prompt;
     try {
-        console.log("prompt from redux", prompts);
         var data = JSON.stringify({
             "prompt": prompts
             // "steps": 20,
@@ -33,7 +32,6 @@ export const generateImg = createAsyncThunk('form/data', async (prompt: any) => 
         };
         const res = await axios(config);
         console.log("generating image");
-        console.log("Res from redux", res);
     } catch (e) {
         console.log("Error", e);
         
