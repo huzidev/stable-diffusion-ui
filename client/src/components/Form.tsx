@@ -1,8 +1,8 @@
 import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Button, Checkbox, Dropdown, Input, Slider, Space, Typography } from "antd";
+import { Button, Checkbox, Dropdown, Image, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
 import { DataType } from "./Types";
@@ -10,8 +10,13 @@ import { DataType } from "./Types";
 export default function Form(): JSX.Element {
   const { TextArea } = Input;
   const [prompt, setPrompt] = useState<DataType>({ prompts: "" });
+  const [latestImage, setLatestImage] = useState('');
   const [visible, setVisible] = useState(false);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    
+  }, [])
 
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
@@ -108,7 +113,17 @@ export default function Form(): JSX.Element {
        <Button onClick={generate}>
         Generate Image
        </Button>
-       
+       <Image
+          preview={{ visible: false }}
+          width={200}
+          src="/images/1684145516113.png"
+          onClick={() => setVisible(true)}
+        />
+        <div style={{ display: 'none' }}>
+          <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis)}}>
+            <Image src="/images/1684145516113.png" />
+          </Image.PreviewGroup>
+        </div>
     </div>
   )
 
