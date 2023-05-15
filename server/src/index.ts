@@ -34,8 +34,17 @@ server.use(cors({
 }));
 
 async function gen() {
-    const result = await axios(config);
-    console.log("Res", result);
+    try {
+        const result = await axios(config);
+        const { images, info } = result.data;
+        for (const image of images) {
+            const buffer = Buffer.from(image, "base64");
+        }
+        console.log("Res", result);
+    } catch (e) {
+        console.log("Error", e);
+        
+    }
 }
 
 server.get("/get", (req: Request, res: Response) => {
