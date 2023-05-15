@@ -52,8 +52,8 @@ server.post("/test", (req: Request, res: Response) => {
             for (const image of images) {
                 const buffer = Buffer.from(image, "base64");
                 const imgPath = path.join(`images`, `${filename}.png`);
-                latestImage = buffer;
-                fs.writeFileSync(imgPath, latestImage);
+                fs.writeFileSync(imgPath, buffer);
+                latestImage = imgPath;
             }
             console.log("Res", result);
         } catch (e) {
