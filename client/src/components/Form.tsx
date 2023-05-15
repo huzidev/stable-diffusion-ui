@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
 import { getModels } from "../store/models/models";
+import { getMethods } from "../store/samplers/methods";
 import { DataType } from "./Types";
  
 export default function Form(): JSX.Element {
@@ -50,7 +51,12 @@ export default function Form(): JSX.Element {
   function getAllModels() {
     dispatch(getModels());
   }
+  
+  function getAllMethods() {
+    dispatch(getMethods());
+  }
 
+  
   return (
     <div>
       {/* Drop down for models */}
