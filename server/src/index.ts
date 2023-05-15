@@ -28,7 +28,7 @@ server.post("/test", (req: Request, res: Response) => {
     // });
     
     // const config = {
-    //     method: 'post',
+    //     method: 'post',  
     //     url: 'http://127.0.0.1:7860/sdapi/v1/txt2img',
     //     headers: {
     //         'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ server.post("/test", (req: Request, res: Response) => {
     //     }
     // }
     // console.log("data", data);
-    res.status(200).send("Image generated succescully!")
+    res.status(200).send({ message: "Image generated succescully!" });
 })
 
 
