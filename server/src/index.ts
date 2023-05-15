@@ -83,7 +83,6 @@ server.get("/models", (req: Request, res: Response) => {
     async function getModels() {
         const res = await axios(config);
         let models = res.data;
-        console.log("Result", models);
         let newArr: any = [];
         models.forEach((obj: any) => {
             newArr.push(obj.model_name);
@@ -108,6 +107,8 @@ server.get("/methods", (req: Request, res: Response) => {
         };
         async function getMethods() {
             const res = await axios(config);
+            let samples = res.data;
+            let newArr = [];
         }
     } catch (e) {
         console.log("Error", e);
