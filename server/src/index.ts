@@ -112,6 +112,8 @@ server.get("/methods", (req: Request, res: Response) => {
             samples.forEach((obj) => {
                 newArr.push(obj.name);
             })
+            console.log("Samplers", newArr);
+            
         }
     } catch (e) {
         console.log("Error", e);
