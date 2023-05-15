@@ -21,7 +21,6 @@ export default function Form(): JSX.Element {
       .then((data) => {
         setLatestImage(data.image);
       });
-      dispatch(getModels);
   }, [])
 
   const onChange = (e: CheckboxChangeEvent) => {
@@ -48,7 +47,52 @@ export default function Form(): JSX.Element {
     dispatch(generateImg(prompt));
   }
 
+  function getAllModels() {
+    dispatch(getModels());
+  }
+
   console.log("image", `http://localhost:8080/images/${latestImage}`);
+  
+  let arrText = [ 
+    {
+      title: 'protogenX58RebuiltScifi_10.safetensors [6a21b428a3]',
+      model_name: 'protogenX58RebuiltScifi_10',
+      hash: '6a21b428a3',
+      sha256: '6a21b428a3fb7286f024f958c761ea1a36a5061c3d3c1eb6a815c88af0e97cb0',
+      filename: 'D:\\stable-diffusion\\stable-diffusion-webui\\models\\Stable-diffusion\\protogenX58RebuiltScifi_10.safetensors',
+      config: null
+    },
+    {
+      title: 'realisticVisionV20Fp16.Or1n.safetensors [c0d1994c73]',
+      model_name: 'realisticVisionV20Fp16.Or1n',
+      hash: 'c0d1994c73',
+      sha256: 'c0d1994c73d784a17a5b335ae8bda02dcc8dd2fc5f5dbf55169d5aab385e53f2',
+      filename: 'D:\\stable-diffusion\\stable-diffusion-webui\\models\\Stable-diffusion\\realisticVisionV20Fp16.Or1n.safetensors',
+      config: null
+    },
+    {
+      title: 'redshift-diffusion-v1.ckpt [ed8c2ee432]',
+      model_name: 'redshift-diffusion-v1',
+      hash: 'ed8c2ee432',
+      sha256: 'ed8c2ee43268932a420f5db00b105881770a19c0afd0d35876330e2bbdcce426',
+      filename: 'D:\\stable-diffusion\\stable-diffusion-webui\\models\\Stable-diffusion\\redshift-diffusion-v1.ckpt',
+      config: null
+    }
+  ]
+
+  let newObj: any = {};
+  arrText.forEach((element: any) => {
+    for (let key in element) {
+        if (key === "model_name") {
+          newObj[key] = element[key]
+          newObj = {...newObj}
+        }
+      }
+    })
+
+    console.log("new obj", newObj);
+    
+    
   
 
   return (
@@ -137,6 +181,9 @@ export default function Form(): JSX.Element {
             {latestImage && <Image src={`http://localhost:8080/images/${latestImage}`} />}
           </Image.PreviewGroup>
         </div>
+        <Button onClick={getAllModels}>
+          Get models
+        </Button>
     </div>
   )
 
