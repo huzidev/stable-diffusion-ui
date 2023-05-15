@@ -9,7 +9,8 @@ import { DataType } from "./Types";
  
 export default function Form(): JSX.Element {
   const { TextArea } = Input;
-  const [prompt, setPrompt] = useState<DataType>({ prompts: "" })
+  const [prompt, setPrompt] = useState<DataType>({ prompts: "" });
+  const [visible, setVisible] = useState(false);
   const dispatch = useAppDispatch();
 
   const onChange = (e: CheckboxChangeEvent) => {
