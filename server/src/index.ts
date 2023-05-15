@@ -110,7 +110,7 @@ server.get("/methods", (req: Request, res: Response) => {
             let samples = res.data;
             let newArr = [];
             samples.forEach((obj) => {
-                newArr.push(obj.name)
+                newArr.push(obj.name);
             })
         }
     } catch (e) {
