@@ -80,20 +80,10 @@ export default function Form(): JSX.Element {
     }
   ]
 
-  let newObj: any = {};
-  arrText.forEach((element: any) => {
-    for (let key in element) {
-        if (key === "model_name") {
-          newObj[key] = element[key]
-          newObj = {...newObj}
-        }
-      }
-    })
-
-    console.log("new obj", newObj);
-    
-    
-  
+  let newArr: any = [];
+  arrText.forEach((obj) => {
+    newArr.push(obj.model_name);
+  });
 
   return (
     <div>
