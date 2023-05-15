@@ -98,6 +98,15 @@ server.get("/models", (req: Request, res: Response) => {
 })
 
 
+server.get("/methods", (req: Request, res: Response) => {
+    try {
+        
+    } catch (e) {
+        console.log("Error", e);
+    }
+})
+
+
 
 server.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
