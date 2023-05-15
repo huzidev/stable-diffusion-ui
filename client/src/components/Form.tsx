@@ -2,18 +2,15 @@ import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Checkbox, Dropdown, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
-import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
-import { DataType as Type } from "./Types";
+import { DataType } from "./Types";
  
 export default function Form(): JSX.Element {
   const { TextArea } = Input;
-  const [prompt, setPrompt] = useState<Type>({ text: "" })
+  const [prompt, setPrompt] = useState<DataType>({ prompts: "" })
   const dispatch = useAppDispatch();
-  const Navigate = useNavigate();
 
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
@@ -26,22 +23,17 @@ export default function Form(): JSX.Element {
     }
   ];
 
-  let name, value;
   function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    name = e.target.value;
-    value = e.target.value;
     setPrompt({
       ...prompt,
-      [name]: value
+      [e.target.name]: e.target.value
     });
   };
 
-  const { text } = prompt;
+  const { prompts } = prompt;
 
   async function generate() {
-    dispatch(generateImg(user));
-    const result = axios.post("http://localhost:8080/test")
-    console.log("resukt", result);
+    dispatch(generateImg());
   }
 
   return (
@@ -63,8 +55,8 @@ export default function Form(): JSX.Element {
        
        {/* text area for prompts */}
        <TextArea 
-        name="text"
-        value={text}
+        name="prompts"
+        value={prompts}
         onChange={inputHandler}
         placeholder="Enter yours prompt"
         rows={4} 

@@ -1,20 +1,22 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const prompts: string = "an anime character holding sword";
+
 var data = JSON.stringify({
-    "prompt": "village in winter season",
-    "steps": 20,
-    "cfg_scale": 7,
-    "sampler_name": "Heun",
-    "batch_size": 1,
-    "width": 512,
-    "height": 512,
-    "seed": -1,
+    "prompt": prompts
+    // "steps": 20,
+    // "cfg_scale": 7,
+    // "sampler_name": "Heun",
+    // "batch_size": 1,
+    // "width": 512,
+    // "height": 512,
+    // "seed": -1,
 });
 
 const config = {
     method: 'post',
-    url: 'http://localhost:3000/test',
+    url: '"http://localhost:8080/test"',
     headers: {
         'Content-Type': 'application/json'
     },
@@ -22,6 +24,7 @@ const config = {
 };
 
 export const generateImg = createAsyncThunk('form/data', async () => {
+    console.log("prompt from redux", prompts);
     const res = await axios(config);
     console.log("generate image");
     console.log(res);

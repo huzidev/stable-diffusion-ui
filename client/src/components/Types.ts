@@ -1,3 +1,3 @@
 export interface DataType {
-    text: string,
+    prompts: string,
 }
