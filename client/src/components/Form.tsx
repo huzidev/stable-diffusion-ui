@@ -15,7 +15,7 @@ export default function Form(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetch("/latest-img")
+    fetch("http://localhost:8080/latest-img")
       .then((response) => response.json())
       .then((data) => {
         setLatestImage(data.image);
