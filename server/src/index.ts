@@ -74,13 +74,12 @@ server.use("/images", express.static("images"));
 server.get("/models", (req: Request, res: Response) => {
     try {
         const config = {
-        method: 'get',  
-        url: 'http://127.0.0.1:7860/sdapi/v1/sd-models',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-
+            method: 'get',  
+            url: 'http://127.0.0.1:7860/sdapi/v1/sd-models',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
     async function getModels() {
         const res = await axios(config);
         let models = res.data;
@@ -100,7 +99,16 @@ server.get("/models", (req: Request, res: Response) => {
 
 server.get("/methods", (req: Request, res: Response) => {
     try {
-        
+        const config = {
+            method: 'get',  
+            url: 'http://127.0.0.1:7860/sdapi/v1/samplers',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        async function getMethods() {
+            const res = await axios(config);
+        }
     } catch (e) {
         console.log("Error", e);
     }
