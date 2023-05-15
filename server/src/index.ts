@@ -54,6 +54,8 @@ server.post("/test", (req: Request, res: Response) => {
                 const imgPath = path.join(`images`, `${filename}.png`);
                 fs.writeFileSync(imgPath, buffer);
                 latestImage = imgPath;
+                console.log("latest image name", latestImage);
+                
             }
             console.log("Res", result);
         } catch (e) {
@@ -68,8 +70,9 @@ server.post("/test", (req: Request, res: Response) => {
 
 server.get("/latest-img", (req: Request, res: Response) => {
     res.status(202).json({ image: latestImage })
+    console.log("latest image added");
+    
 })
-
 
 // const showImg = path.join(__dirname, "images");
 // server.use("/images", express.static(showImg));

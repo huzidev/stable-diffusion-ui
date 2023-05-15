@@ -117,16 +117,18 @@ export default function Form(): JSX.Element {
        <Button onClick={generate}>
         Generate Image
        </Button>
-       <Image
-          preview={{ visible: false }}
-          width={200}
-          src={`/images/${latestImage}`}
-          onClick={() => setVisible(true)}
-        />
+       {latestImage &&
+        <Image
+            preview={{ visible: false }}
+            width={200}
+            src={`http://localhost:8080/${latestImage}`}
+            onClick={() => setVisible(true)}
+          />
+       }
         <div style={{ display: 'none' }}>
           <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis)}}>
             {/* <Image src="/images/1684145516113.png" /> */}
-            {latestImage && <Image src={`/images/${latestImage}`} />}
+            {latestImage && <Image src={`http://localhost:8080/${latestImage}`} />}
           </Image.PreviewGroup>
         </div>
     </div>
