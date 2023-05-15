@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import Form from "./Form";
 
-export default function App() {
+export default function App(): JSX.Element {
   return (
     <div> 
       <Router>
