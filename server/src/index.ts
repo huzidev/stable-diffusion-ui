@@ -42,8 +42,6 @@ server.post("/test", (req: Request, res: Response) => {
         },
         data: data
     };
-    
-    
     async function gen() {
         try {
             const result = await axios(config);
@@ -60,6 +58,7 @@ server.post("/test", (req: Request, res: Response) => {
             
         }
     }
+    gen();
     console.log("data", data);
     res.status(200).send({ message: "Image generated succescully!" });
 })
