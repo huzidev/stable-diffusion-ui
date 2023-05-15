@@ -78,9 +78,14 @@ server.get("/models", (req: Request, res: Response) => {
         url: 'http://127.0.0.1:7860/sdapi/v1/sd-models',
         headers: {
             'Content-Type': 'application/json'
-        },
+        }
     };
-    
+
+    async function getModels(params:type) {
+        const res = await axios(config);
+        
+    }
+    getModels();
     } catch (e) {
         console.log("Error", e);
         
