@@ -2,9 +2,14 @@ import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Checkbox, Dropdown, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
+import { useNavigate } from 'react-router-dom';
+import { generateImg } from "../store/form/data";
+import { useAppDispatch } from "../store/hooks/hooks";
  
-export default function Form() {
+export default function Form(): JSX.Element {
   const { TextArea } = Input;
+  const dispatch = useAppDispatch();
+  const Navigate = useNavigate();
 
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
@@ -24,6 +29,13 @@ export default function Form() {
       key: "3",
     },
   ];
+
+  function generate() {
+    dispatch(generateImg());
+    Navigate("/test");
+    console.log("will");
+  }
+
   return (
     <div>
       {/* Drop down for models */}
@@ -86,6 +98,9 @@ export default function Form() {
         CFG Scale
        </Typography.Text>
        <Slider defaultValue={7} min={1} max={30} step={0.5}/>
+       <Button onClick={generate}>
+        Generate Image
+       </Button>
     </div>
   )
 
