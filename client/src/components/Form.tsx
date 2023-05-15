@@ -5,6 +5,7 @@ import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
+import { getModels } from "../store/models/models";
 import { DataType } from "./Types";
  
 export default function Form(): JSX.Element {
@@ -20,10 +21,8 @@ export default function Form(): JSX.Element {
       .then((data) => {
         setLatestImage(data.image);
       });
+      dispatch(getModels);
   }, [])
-
-  console.log("front-end image", latestImage);
-  
 
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
@@ -45,7 +44,7 @@ export default function Form(): JSX.Element {
 
   const { prompts } = prompt;
 
-  async function generate() {
+  function generate() {
     dispatch(generateImg(prompt));
   }
 
