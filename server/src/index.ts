@@ -2,8 +2,6 @@ import axios from "axios";
 import bodyParser from "body-parser";
 import cors from "cors";
 import express, { Express, Request, Response } from 'express';
-import fs from "fs";
-import path from "path";
 const server: Express  = express();
 
 const port = 8080;
@@ -22,7 +20,7 @@ server.get("/get", (req: Request, res: Response) => {
 
 
 let latestImage: any = "";
-server.post("/test", (req: Request, res: Response) => {
+server.post("/generate", (req: Request, res: Response) => {
     const { prompt } = req.body;
     console.log("resp", prompt);
     var data = JSON.stringify({
@@ -83,12 +81,11 @@ server.get("/models", (req: Request, res: Response) => {
 
     async function getModels() {
         const res = await axios(config);
-        
+        console.log("Result", res.data);
     }
     getModels();
     } catch (e) {
         console.log("Error", e);
-        
     }
 })
 
