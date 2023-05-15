@@ -5,12 +5,13 @@ import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
 import { DataType as Type } from "./types";
  
 export default function Form(): JSX.Element {
   const { TextArea } = Input;
-  const [prompt, setPrompt] = useState<Type>({ data: "" })
+  const [prompt, setPrompt] = useState<Type>({ text: "" })
   const dispatch = useAppDispatch();
   const Navigate = useNavigate();
 
@@ -35,7 +36,10 @@ export default function Form(): JSX.Element {
     });
   };
 
+  const { text } = prompt;
+
   async function generate() {
+    dispatch(generateImg(user));
     const result = axios.post("http://localhost:8080/test")
     console.log("resukt", result);
   }
@@ -58,7 +62,12 @@ export default function Form(): JSX.Element {
       </Button>
        
        {/* text area for prompts */}
-       <TextArea rows={4} />
+       <TextArea 
+        name = "text"
+        value = {text}
+
+        rows={4} 
+       />
        
        {/* slider for sampling steps */}
        <Slider defaultValue={30} min={0} max={150}/>
