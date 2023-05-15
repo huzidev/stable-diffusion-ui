@@ -1,6 +1,7 @@
 import axios from "axios";
 import cors from "cors";
 import express, { Request, Response } from 'express';
+import fs from "fs";
 import path from "path";
 const server = express();
 
@@ -42,6 +43,7 @@ async function gen() {
         for (const image of images) {
             const buffer = Buffer.from(image, "base64");
             const imgPath = path.join(`images/`, `${filename}.png`);
+            fs.writeFileSync(imgPath, buffer);
         }
         console.log("Res", result);
     } catch (e) {
