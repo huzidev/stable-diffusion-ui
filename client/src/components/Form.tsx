@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
-import { getImage, imageAction } from "../store/image/getImage";
+import { getImage } from "../store/image/getImage";
 import { DataType } from "./Types";
  
 export default function Form(): JSX.Element {
@@ -17,18 +17,23 @@ export default function Form(): JSX.Element {
   const [methods, setMethods] = useState<string[]>([]);
   const [models, setModels] = useState<string[]>([]);
   const dispatch = useAppDispatch();
-  const latestImageLink = useAppSelector(state => state.image.imageLink);
-  
-  console.log("latest Image", latestImageLink);
-  
-  function test() {
-    dispatch(imageAction.testImag());
-  }
 
   useEffect(() => {
     dispatch(getImage());
-    setLatestImage(latestImageLink);
+    // dispatch(imageAction.testImag());
+    // setLatestImage(latestImageLink);
   }, [])
+  let latestImageLink: any;
+  function hopeItWillWork() {
+    latestImageLink = useAppSelector(state => state.image.imageLink);
+  }
+
+  useEffect(() => {
+    hopeItWillWork()
+  }, [dispatch])
+  
+  console.log("latest Image", latestImageLink); 
+  
 
   // async function getLatestImage() {
   //   try {
