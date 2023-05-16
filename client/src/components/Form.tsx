@@ -32,11 +32,33 @@ export default function Form(): JSX.Element {
     console.log(`checked = ${e.target.checked}`);
   };
 
-  const items: MenuProps["items"] = [
-    {
-      label: <a href="https://www.antgroup.com">1st menu item</a>,
-      key: "0",
+  async function getAllModels() {
+    try {
+      const resp = await axios.get<string[]>('http://localhost:8080/models');
+      setModels(resp.data);
+    } catch (e) {
+      console.log("Error", e);
     }
+  }
+  
+  async function getAllMethods() {
+    try {
+      const resp = await axios.get<string[]>('http://localhost:8080/methods');
+      setMethods(resp.data);
+    } catch (e) {
+      console.log("Error", e);
+    }
+  };
+  
+  console.log("methdos", methods);
+
+  const itemsList: any = methods.map((elements, index) => ({
+    label: elements,
+    key: String(index)
+  }))
+
+  const items: MenuProps["items"] = [
+      itemsList
   ];
 
   function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -57,23 +79,6 @@ export default function Form(): JSX.Element {
     setLatestImage(latestImageLink);
   }, [latestImageLink])
 
-  async function getAllModels() {
-    try {
-      const resp = await axios.get<string[]>('http://localhost:8080/models');
-      setModels(resp.data);
-    } catch (e) {
-      console.log("Error", e);
-    }
-  }
-  
-  async function getAllMethods() {
-    try {
-      const resp = await axios.get<string[]>('http://localhost:8080/methods');
-      setMethods(resp.data);
-    } catch (e) {
-      console.log("Error", e);
-    }
-  };
 
 
   return (
