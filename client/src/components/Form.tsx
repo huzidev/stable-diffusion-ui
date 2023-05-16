@@ -51,12 +51,12 @@ export default function Form(): JSX.Element {
     key: index.toString()
   }));
 
-  let modelsList: any = methods.map((model, index) => ({
+  let modelsList: any = models.map((model, index) => ({
     label: model,
     key: index.toString()
   }));
 
-  const sdModels: MenuProps["items"] = itemsList;
+  const sdModels: MenuProps["items"] = modelsList;
   const samplers: MenuProps["items"] = itemsList;
 
   function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
