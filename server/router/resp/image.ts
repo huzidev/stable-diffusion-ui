@@ -10,7 +10,6 @@ router.use(cors({
     origin: "*"
 }));
 
-
 let latestImage: any = "";
 router.post("/generate", (req: Request, res: Response) => {
     const { prompt } = req.body;
