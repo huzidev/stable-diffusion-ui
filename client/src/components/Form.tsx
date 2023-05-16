@@ -22,9 +22,13 @@ export default function Form(): JSX.Element {
   useEffect(() => {
     dispatch(getImage());
     // dispatch(imageAction.testImag());
-    setLatestImage(latestImageLink);
+    setLatestImage(latestImage);
   }, [])
   
+  useEffect(() => {
+    setLatestImage(latestImageLink);
+  }, [latestImageLink])
+
   console.log("latest Image", latestImageLink); 
 
   // async function getLatestImage() {
