@@ -28,7 +28,7 @@ router.get("/models", (req: Request, res: Response) => {
         console.log("Error", e);
     }
 })
-
+let global = []
 router.get("/methods", (req: Request, res: Response) => {
     try {
         let newArr = [];
@@ -46,6 +46,7 @@ router.get("/methods", (req: Request, res: Response) => {
                 newArr.push(obj.name);
             })
             console.log("Samplers", newArr);
+            global = newArr;
         }
         getMethods();
         res.status(202).send({ message: "Sample methods fetched successfully!" });
@@ -57,7 +58,7 @@ router.get("/methods", (req: Request, res: Response) => {
 
 
 router.get("/all", (req, res) => {
-    
+    res.json(global);
 })
 
 
