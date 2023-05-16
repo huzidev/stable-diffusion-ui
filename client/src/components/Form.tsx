@@ -54,7 +54,6 @@ export default function Form(): JSX.Element {
     try {
       const resp = await axios.get<string[]>('http://localhost:8080/models');
       setModels(resp.data);
-      console.log("Res models", resp);
     } catch (e) {
       console.log("Error", e);
     }
@@ -64,7 +63,6 @@ export default function Form(): JSX.Element {
     try {
       const resp = await axios.get<string[]>('http://localhost:8080/methods');
       setMethods(resp.data);
-      console.log("Res methods", resp);
     } catch (e) {
       console.log("Error", e);
     }
