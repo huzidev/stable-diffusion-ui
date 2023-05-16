@@ -77,12 +77,10 @@ export default function Form(): JSX.Element {
     setLatestImage(latestImageLink);
   }, [latestImageLink])
 
-
-
   return (
     <div>
       {/* Drop down for models */}
-       <Dropdown menu={{ items, selectable: true }}  trigger={["click"]}>
+       <Dropdown menu={{ items, selectable: true }} trigger={["click"]}>
          <a onClick={(e) => e.preventDefault()}>
            <Space>
              Select Models
