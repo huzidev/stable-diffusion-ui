@@ -46,8 +46,6 @@ export default function Form(): JSX.Element {
     }
   };
   
-  const date = Date.now();
-
   let itemsList: any = methods.map((elements, index) => ({
     label: elements,
     key: index.toString()
