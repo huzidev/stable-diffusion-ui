@@ -11,7 +11,7 @@ router.post("/generate", (req: Request, res: Response) => {
     console.log("resp", prompt);
     var data = JSON.stringify({
         prompt,
-        "steps": 3,
+        "steps": 30,
         "cfg_scale": 7,
         "sampler_name": "Heun",
         "batch_size": 1,

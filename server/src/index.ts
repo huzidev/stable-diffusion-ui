@@ -3,7 +3,7 @@ import cors from "cors";
 import express, { Express, Request, Response } from 'express';
 const server: Express  = express();
 const port = 8080;
-const auth = require("../router/auth");
+const auth = require("../router/auth/auth");
 const image = require("../router/resp/image");
 
 server.use(cors({
