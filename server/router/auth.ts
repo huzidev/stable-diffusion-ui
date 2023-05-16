@@ -53,6 +53,12 @@ router.get("/methods", (req: Request, res: Response) => {
     } catch (e) {
         console.log("Error", e);
     }
+});
+
+
+router.get("/all", (req, res) => {
+    
 })
+
 
 module.exports = router;
