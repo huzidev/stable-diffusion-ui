@@ -174,7 +174,7 @@ export default function Form(): JSX.Element {
         <Button onClick={getAllMethods}>
           Get Methods
         </Button>
-        <Button onClick={}>
+        <Button onClick={getImageToShow}>
           Show latest image
         </Button>
     </div>
