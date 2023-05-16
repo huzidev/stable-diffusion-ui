@@ -19,15 +19,12 @@ export default function Form(): JSX.Element {
   const dispatch = useAppDispatch();
   const latestImageLink = useAppSelector(state => state.image.imageLink);
 
-  useEffect(() => {
-    dispatch(getImage());
-    // dispatch(imageAction.testImag());
-    setLatestImage(latestImage);
-  }, [])
+  // useEffect(() => {
+  //   // dispatch(imageAction.testImag());
+  //   // setLatestImage(latestImage);
+  // }, [])
   
-  useEffect(() => {
-    setLatestImage(latestImageLink);
-  }, [latestImageLink])
+  
 
   console.log("latest Image", latestImageLink); 
 
@@ -53,7 +50,12 @@ export default function Form(): JSX.Element {
 
   function generate() {
     dispatch(generateImg(prompt));
+    dispatch(getImage());
   }
+
+  useEffect(() => {
+    setLatestImage(latestImageLink);
+  }, [latestImageLink])
 
   async function getAllModels() {
     try {
