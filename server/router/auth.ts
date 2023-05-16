@@ -40,8 +40,9 @@ router.get("/methods", async (req: Request, res: Response) => {
         };
         const res = await axios(config);
         let samples = res.data;
-        const newArr: [] = samples.map((obj) => obj.name);
+        const newArr: AxiosResponse<[]> = samples.map((obj) => obj.name);
         console.log("Samplers", newArr);
+        res.json(newArr)
         // res.status(202).send({ message: "Sample methods fetched successfully!" });
     } catch (e) {
         console.log("Error", e);
