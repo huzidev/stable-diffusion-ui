@@ -20,6 +20,7 @@ router.get("/models", (req: Request, res: Response) => {
             newArr.push(obj.model_name);
         });
         console.log("newArr", newArr);
+        res.json(newArr);
     }
     getModels();
     res.status(201).send({ message: "Models fetched successfully!" });
@@ -30,6 +31,7 @@ router.get("/models", (req: Request, res: Response) => {
 
 router.get("/methods", (req: Request, res: Response) => {
     try {
+        let newArr = [];
         const config = {
             method: 'get',  
             url: 'http://127.0.0.1:7860/sdapi/v1/samplers',
@@ -40,7 +42,6 @@ router.get("/methods", (req: Request, res: Response) => {
         async function getMethods() {
             const res = await axios(config);
             let samples = res.data;
-            let newArr = [];
             samples.forEach((obj) => {
                 newArr.push(obj.name);
             })
@@ -48,6 +49,7 @@ router.get("/methods", (req: Request, res: Response) => {
         }
         getMethods();
         res.status(202).json({ message: "Sample methods fetched successfully!" });
+        res.json(newArr);
     } catch (e) {
         console.log("Error", e);
     }
