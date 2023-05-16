@@ -5,18 +5,16 @@ import express, { Request, Response } from 'express';
 import fs from "fs";
 import path from "path";
 
-const server = express.Router();
+const router = express.Router();
 
-server.use(cors({
+router.use(cors({
     origin: "*"
 }));
 
-server.use(express.json());
-server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended : true }));
+router.use(bodyParser.urlencoded({ extended : false }));
 
 let latestImage: any = "";
-server.post("/generate", (req: Request, res: Response) => {
+router.post("/generate", (req: Request, res: Response) => {
     const { prompt } = req.body;
     console.log("resp", prompt);
     var data = JSON.stringify({
@@ -59,13 +57,13 @@ server.post("/generate", (req: Request, res: Response) => {
     res.status(200).send({ message: "Image generated succescully!" });
 })
 
-server.get("/latest-img", (req: Request, res: Response) => {
+router.get("/latest-img", (req: Request, res: Response) => {
     res.status(202).json({ image: latestImage })
 })
 
-server.use("/images", express.static("images"));
+router.use("/images", express.static("images"));
 
-server.get("/models", (req: Request, res: Response) => {
+router.get("/models", (req: Request, res: Response) => {
     try {
         const config = {
             method: 'get',  
@@ -90,7 +88,7 @@ server.get("/models", (req: Request, res: Response) => {
 })
 
 
-server.get("/methods", (req: Request, res: Response) => {
+router.get("/methods", (req: Request, res: Response) => {
     try {
         const config = {
             method: 'get',  
