@@ -53,7 +53,7 @@ export default function Form(): JSX.Element {
   async function getAllModels() {
     try {
       const resp = await axios.get<string[]>('http://localhost:8080/models');
-      setMethods(resp.data);
+      setModels(resp.data);
       console.log("Resp data", resp);
     } catch (e) {
       console.log("Error", e);
