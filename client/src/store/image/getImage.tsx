@@ -1,5 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { DataType } from "./Types";
+
+const initialState: DataType = {
+    image: ''
+}
 
 export const getModels = createAsyncThunk("models/getModels", async () => {
     try {
