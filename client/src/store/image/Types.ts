@@ -1,3 +1,3 @@
 export interface DataType {
-    image: string
+    imageLink: string
 }

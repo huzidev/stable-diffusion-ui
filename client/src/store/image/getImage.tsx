@@ -3,12 +3,12 @@ import axios from "axios";
 import { DataType } from "./Types";
 
 const initialState: DataType = {
-    image: ''
+    imageLink: ''
 }
 
 let latestImage: any;
 
-export const getImage = createAsyncThunk("models/getModels", async () => {
+export const getImage = createAsyncThunk("images/getImage", async () => {
     try {
         const response = await axios("http://localhost:8080/latest-img");
         const data = response.data;

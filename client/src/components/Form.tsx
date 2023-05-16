@@ -5,7 +5,7 @@ import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
-import { useAppDispatch } from "../store/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
 import { DataType } from "./Types";
  
 export default function Form(): JSX.Element {
@@ -16,6 +16,7 @@ export default function Form(): JSX.Element {
   const [methods, setMethods] = useState<string[]>([]);
   const [models, setModels] = useState<string[]>([]);
   const dispatch = useAppDispatch();
+  const latestImageLink = useAppSelector(state => state.image)
 
 
   async function getLatestImage() {
