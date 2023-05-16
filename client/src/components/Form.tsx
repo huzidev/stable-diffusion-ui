@@ -8,7 +8,7 @@ import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
 import { DataType } from "./Types";
  
-export default async async function Form(): Promise<Promise<JSX.Element>> {
+export default function Form(): JSX.Element {
   const { TextArea } = Input;
   const [prompt, setPrompt] = useState<DataType>({ prompts: "" });
   const [latestImage, setLatestImage] = useState('');
@@ -21,9 +21,8 @@ export default async async function Form(): Promise<Promise<JSX.Element>> {
   async function getLatestImage() {
     try {
       const response = await axios("http://localhost:8080/latest-img");
-      console.log("response for images", response);
       const data = response.data;
-      setLatestImage(data);
+      setLatestImage(data.image);
     } catch (e) {
       console.log("Error", e);
     }
