@@ -1,14 +1,9 @@
 import axios from "axios";
-import cors from "cors";
 import express, { Request, Response } from 'express';
 import fs from "fs";
 import path from "path";
 
 const router = express.Router();
-
-router.use(cors({
-    origin: "*"
-}));
 
 let latestImage: any = "";
 router.post("/generate", (req: Request, res: Response) => {

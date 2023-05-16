@@ -1,13 +1,7 @@
 import axios from "axios";
-import cors from "cors";
 import express, { Request, Response } from 'express';
 
 const router = express.Router();
-
-router.use(cors({
-    origin: "*"
-}));
-
 
 router.get("/models", (req: Request, res: Response) => {
     try {
@@ -28,6 +22,7 @@ router.get("/models", (req: Request, res: Response) => {
         console.log("newArr", newArr);
     }
     getModels();
+    res.status(201).send({ message: "Models fetched successfully!" });
     } catch (e) {
         console.log("Error", e);
     }
@@ -51,7 +46,8 @@ router.get("/methods", (req: Request, res: Response) => {
             })
             console.log("Samplers", newArr);
         }
-        getMethods()
+        getMethods();
+        res.status(201).send({ message: "Models fetched successfully!" });
     } catch (e) {
         console.log("Error", e);
     }
