@@ -6,6 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
+import { getImage } from "../store/image/getImage";
 import { DataType } from "./Types";
  
 export default function Form(): JSX.Element {
@@ -16,8 +17,8 @@ export default function Form(): JSX.Element {
   const [methods, setMethods] = useState<string[]>([]);
   const [models, setModels] = useState<string[]>([]);
   const dispatch = useAppDispatch();
-  const latestImageLink = useAppSelector(state => state.image)
-
+  const latestImageLink = useAppSelector(state => state.image);
+  console.log("imageLink from redux", latestImageLink.imageLink);
 
   async function getLatestImage() {
     try {
@@ -74,6 +75,10 @@ export default function Form(): JSX.Element {
       console.log("Error", e);
     }
   };
+
+  async function getImageToShow(params:type) {
+    dispatch(getImage());
+  }
 
   console.log("Mehtods", methods);
   console.log("Models", models);
@@ -168,6 +173,9 @@ export default function Form(): JSX.Element {
         </Button>
         <Button onClick={getAllMethods}>
           Get Methods
+        </Button>
+        <Button onClick={}>
+          Show latest image
         </Button>
     </div>
   )
