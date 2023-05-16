@@ -1,10 +1,11 @@
 import axios from "axios";
 import bodyParser from "body-parser";
 import cors from "cors";
-import express, { Express, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import fs from "fs";
 import path from "path";
-const server: Express  = express();
+
+const server = express.Router();
 
 server.use(cors({
     origin: "*"
