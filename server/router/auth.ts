@@ -27,7 +27,7 @@ router.get("/models", (req: Request, res: Response) => {
     } catch (e) {
         console.log("Error", e);
     }
-})
+});
 
 router.get("/methods", (req: Request, res: Response) => {
     try {
@@ -48,10 +48,7 @@ router.get("/methods", (req: Request, res: Response) => {
             console.log("Samplers", newArr);
         }
         getMethods();
-        if (newArr) {
-            console.log("will it work");
-            res.json(newArr);
-        }
+        res.json(newArr);
         // res.status(202).send({ message: "Sample methods fetched successfully!" });
     } catch (e) {
         console.log("Error", e);
