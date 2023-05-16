@@ -3,7 +3,7 @@ import axios from "axios";
 import { DataType } from "./Types";
 
 const initialState: DataType = {
-    imageLink: ''
+    imageLink: 'no image here'
 }
 
 let latestImage: any;
@@ -28,7 +28,7 @@ const getImageSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getImage.fulfilled, (state) => {
-            state.image = latestImage;
+            state.imageLink = latestImage;
         })
     }
 })
