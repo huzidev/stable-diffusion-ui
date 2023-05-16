@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
-import { getImage } from "../store/image/getImage";
+import { getImage, imageAction } from "../store/image/getImage";
 import { DataType } from "./Types";
  
 export default function Form(): JSX.Element {
@@ -21,10 +21,14 @@ export default function Form(): JSX.Element {
   
   console.log("latest Image", latestImageLink);
   
+  function test() {
+    dispatch(imageAction.testImag());
+  }
+
   useEffect(() => {
     dispatch(getImage());
     setLatestImage(latestImageLink);
-  }, [dispatch])
+  }, [])
 
   // async function getLatestImage() {
   //   try {
@@ -173,6 +177,9 @@ export default function Form(): JSX.Element {
         </Button>
         <Button onClick={getAllMethods}>
           Get Methods
+        </Button>
+        <Button onClick={test}>
+          Run this
         </Button>
     </div>
   )
