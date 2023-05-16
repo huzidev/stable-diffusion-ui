@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
 import { getModels } from "../store/models/models";
-import { getMethods } from "../store/samplers/methods";
 import { DataType } from "./Types";
  
 export default function Form(): JSX.Element {
@@ -29,15 +28,16 @@ export default function Form(): JSX.Element {
   useEffect(() => {
     async function getMethods() {
       try {
-        const resp = await axios("/api/data")
-        const arrayOfStrings = await resp.json();
-        setMethods(arrayOfStrings);
+        const resp = await axios.get<string[]>('/methods');
+        setMethods(resp.data);
       } catch (e) {
         console.log("Error", e);
       }
     };
     getMethods();
   }, []);
+
+  console.log("Mehtods", methods);
 
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
@@ -67,10 +67,16 @@ export default function Form(): JSX.Element {
     dispatch(getModels());
   }
   
-  function getAllMethods() {
-    dispatch(getMethods());
-  }
-  
+  async function getAllMethods() {
+      try {
+        const resp = await axios.get<string[]>('http://localhost:8080/methods');
+        setMethods(resp.data);
+        console.log("Resp data", resp);
+        
+      } catch (e) {
+        console.log("Error", e);
+      }
+    };
   return (
     <div>
       {/* Drop down for models */}
