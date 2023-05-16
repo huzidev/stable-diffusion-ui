@@ -25,19 +25,6 @@ export default function Form(): JSX.Element {
       });
   }, [])
 
-  useEffect(() => {
-    async function getMethods() {
-      try {
-        const resp = await axios.get<string[]>('/methods');
-        setMethods(resp.data);
-      } catch (e) {
-        console.log("Error", e);
-      }
-    };
-    getMethods();
-  }, []);
-
-  console.log("Mehtods", methods);
 
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
@@ -77,6 +64,7 @@ export default function Form(): JSX.Element {
       console.log("Error", e);
     }
   };
+  console.log("Mehtods", methods);
 
   return (
     <div>
