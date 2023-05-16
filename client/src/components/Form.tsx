@@ -54,9 +54,11 @@ export default function Form(): JSX.Element {
 
   const itemsList: any = methods.map((elements, index) => ({
     label: elements,
-    key: String(index)
-  }))
+    key: index.toString()
+  }));
 
+  console.log("items", itemsList);
+  
   const items: MenuProps["items"] = [
       itemsList
   ];
