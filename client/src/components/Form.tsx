@@ -24,10 +24,6 @@ export default function Form(): JSX.Element {
   //   // setLatestImage(latestImage);
   // }, [])
   
-  
-
-  console.log("latest Image", latestImageLink); 
-
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
   };
@@ -50,18 +46,17 @@ export default function Form(): JSX.Element {
     }
   };
   
-  console.log("methdos", methods);
+  const date = Date.now();
 
-  const itemsList: any = methods.map((elements, index) => ({
+  let itemsList: any = methods.map((elements, index) => ({
     label: elements,
     key: index.toString()
-  }));
+  }
+  ));
 
   console.log("items", itemsList);
-  
-  const items: MenuProps["items"] = [
-      itemsList
-  ];
+
+  const items: MenuProps["items"] = itemsList
 
   function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setPrompt({
