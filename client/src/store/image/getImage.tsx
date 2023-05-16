@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { DataType } from "./Types";
 
@@ -15,4 +15,10 @@ export const getModels = createAsyncThunk("models/getModels", async () => {
     }
 });
 
-const 
+const getImageSlice = createSlice({
+    name: "image",
+    initialState,
+    reducers : {
+        
+    }
+})
