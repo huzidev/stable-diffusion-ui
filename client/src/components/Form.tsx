@@ -13,7 +13,7 @@ export default function Form(): JSX.Element {
   const { TextArea } = Input;
   const [prompt, setPrompt] = useState<DataType>({ prompts: "" });
   const [latestImage, setLatestImage] = useState('');
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState<boolean>(false);
   const [methods, setMethods] = useState<string[]>([]);
   const dispatch = useAppDispatch();
 
@@ -68,15 +68,16 @@ export default function Form(): JSX.Element {
   }
   
   async function getAllMethods() {
-      try {
-        const resp = await axios.get<string[]>('http://localhost:8080/methods');
-        setMethods(resp.data);
-        console.log("Resp data", resp);
-        
-      } catch (e) {
-        console.log("Error", e);
-      }
-    };
+    try {
+      const resp = await axios.get<string[]>('http://localhost:8080/methods');
+      setMethods(resp.data);
+      console.log("Resp data", resp);
+      
+    } catch (e) {
+      console.log("Error", e);
+    }
+  };
+
   return (
     <div>
       {/* Drop down for models */}
