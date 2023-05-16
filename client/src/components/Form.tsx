@@ -6,7 +6,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
-import { getModels } from "../store/models/models";
 import { DataType } from "./Types";
  
 export default function Form(): JSX.Element {
@@ -15,6 +14,7 @@ export default function Form(): JSX.Element {
   const [latestImage, setLatestImage] = useState('');
   const [visible, setVisible] = useState<boolean>(false);
   const [methods, setMethods] = useState<string[]>([]);
+  const [models, setModels] = useState<string[]>([]);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -50,8 +50,14 @@ export default function Form(): JSX.Element {
     dispatch(generateImg(prompt));
   }
 
-  function getAllModels() {
-    dispatch(getModels());
+  async function getAllModels() {
+    try {
+      const resp = await axios.get<string[]>('http://localhost:8080/models');
+      setMethods(resp.data);
+      console.log("Resp data", resp);
+    } catch (e) {
+      console.log("Error", e);
+    }
   }
   
   async function getAllMethods() {
@@ -59,11 +65,12 @@ export default function Form(): JSX.Element {
       const resp = await axios.get<string[]>('http://localhost:8080/methods');
       setMethods(resp.data);
       console.log("Resp data", resp);
-      
     } catch (e) {
       console.log("Error", e);
     }
   };
+
+
   console.log("Mehtods", methods);
 
   return (
