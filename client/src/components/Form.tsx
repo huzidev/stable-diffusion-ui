@@ -76,7 +76,7 @@ export default function Form(): JSX.Element {
     }
   };
 
-  async function getImageToShow(params:type) {
+  async function getImageToShow() {
     dispatch(getImage());
   }
 
