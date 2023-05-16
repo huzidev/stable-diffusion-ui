@@ -3,7 +3,7 @@ import type { MenuProps } from "antd";
 import { Button, Checkbox, Dropdown, Image, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
 import { getImage } from "../store/image/getImage";
@@ -18,21 +18,20 @@ export default function Form(): JSX.Element {
   const [models, setModels] = useState<string[]>([]);
   const dispatch = useAppDispatch();
   const latestImageLink = useAppSelector(state => state.image);
-  console.log("imageLink from redux", latestImageLink.imageLink);
+  
+  // async function getLatestImage() {
+  //   try {
+  //     const response = await axios("http://localhost:8080/latest-img");
+  //     const data = response.data;
+  //     setLatestImage(data.image);
+  //   } catch (e) {
+  //     console.log("Error", e);
+  //   }
+  // }
 
-  async function getLatestImage() {
-    try {
-      const response = await axios("http://localhost:8080/latest-img");
-      const data = response.data;
-      setLatestImage(data.image);
-    } catch (e) {
-      console.log("Error", e);
-    }
-  }
-
-  useEffect(() => {
-    getLatestImage()
-  }, [])
+  // useEffect(() => {
+  //   getLatestImage()
+  // }, [])
 
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
@@ -77,6 +76,7 @@ export default function Form(): JSX.Element {
   };
 
   async function getImageToShow() {
+    // setLatestImage(latestImageLink);
     dispatch(getImage());
   }
 
