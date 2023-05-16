@@ -87,7 +87,6 @@ router.get("/models", (req: Request, res: Response) => {
     }
 })
 
-
 router.get("/methods", (req: Request, res: Response) => {
     try {
         const config = {
@@ -111,3 +110,5 @@ router.get("/methods", (req: Request, res: Response) => {
         console.log("Error", e);
     }
 })
+
+module.exports = router;
