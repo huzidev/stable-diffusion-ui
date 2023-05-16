@@ -17,23 +17,15 @@ export default function Form(): JSX.Element {
   const [methods, setMethods] = useState<string[]>([]);
   const [models, setModels] = useState<string[]>([]);
   const dispatch = useAppDispatch();
+  const latestImageLink = useAppSelector(state => state.image.imageLink);
 
   useEffect(() => {
     dispatch(getImage());
     // dispatch(imageAction.testImag());
-    // setLatestImage(latestImageLink);
+    setLatestImage(latestImageLink);
   }, [])
-  let latestImageLink: any;
-  function hopeItWillWork() {
-    latestImageLink = useAppSelector(state => state.image.imageLink);
-  }
-
-  useEffect(() => {
-    hopeItWillWork()
-  }, [dispatch])
   
   console.log("latest Image", latestImageLink); 
-  
 
   // async function getLatestImage() {
   //   try {
@@ -183,9 +175,9 @@ export default function Form(): JSX.Element {
         <Button onClick={getAllMethods}>
           Get Methods
         </Button>
-        <Button onClick={test}>
+        {/* <Button onClick={test}>
           Run this
-        </Button>
+        </Button> */}
     </div>
   )
 
