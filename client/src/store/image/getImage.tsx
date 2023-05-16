@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getModels = createAsyncThunk("models/getModels", async () => {
     try {
-        const res = await axios("http://localhost:8080/latest-img");
+        const response = await axios("http://localhost:8080/latest-img");
         const data = response.data;
     } catch (e) {
         console.log("Error", e);
