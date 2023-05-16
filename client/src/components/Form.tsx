@@ -17,14 +17,14 @@ export default function Form(): JSX.Element {
   const [methods, setMethods] = useState<string[]>([]);
   const [models, setModels] = useState<string[]>([]);
   const dispatch = useAppDispatch();
-  const latestImageLink = useAppSelector(state => state.image);
+  const latestImageLink = useAppSelector(state => state.image.imageLink);
   
-  console.log("latest Image", latestImageLink.imageLink);
+  console.log("latest Image", latestImageLink);
   
   useEffect(() => {
-    setLatestImage(latestImageLink.imageLink);
     dispatch(getImage());
-  }, [])
+    setLatestImage(latestImageLink);
+  }, [dispatch])
 
   // async function getLatestImage() {
   //   try {

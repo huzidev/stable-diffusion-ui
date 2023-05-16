@@ -6,13 +6,14 @@ const initialState: DataType = {
     imageLink: 'no image here'
 }
 
-let latestImage: any;
+let testImg: any = "";
 
 export const getImage = createAsyncThunk("images/getImage", async () => {
     try {
         const response = await axios("http://localhost:8080/latest-img");
         const data = response.data;
-        latestImage = data.image;
+        testImg = data.image;
+        // return data.image;
     } catch (e) {
         console.log("Error", e);
     }
@@ -22,13 +23,13 @@ const getImageSlice = createSlice({
     name: "image",
     initialState,
     reducers : {
-        // getImageLatest (state) {
-        //     state.res = 
-        // }
+        testImag(state) {
+            state.imageLink = testImg
+        }
     },
     extraReducers: (builder) => {
-        builder.addCase(getImage.fulfilled, (state) => {
-            state.imageLink = latestImage;
+        builder.addCase(getImage.fulfilled, (state, action) => {
+            state.imageLink = action.payload;
         })
     }
 })
