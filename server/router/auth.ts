@@ -22,7 +22,7 @@ router.get("/models", (req: Request, res: Response) => {
         console.log("newArr", newArr);
     }
     getModels();
-    res.status(201).send({ message: "Models fetched successfully!" });
+    res.status(201).json({ message: "Models fetched successfully!" });
     } catch (e) {
         console.log("Error", e);
     }
@@ -47,7 +47,7 @@ router.get("/methods", (req: Request, res: Response) => {
             console.log("Samplers", newArr);
         }
         getMethods();
-        res.status(202).send({ message: "Sample methods fetched successfully!" });
+        res.status(202).json({ message: "Sample methods fetched successfully!" });
     } catch (e) {
         console.log("Error", e);
     }
