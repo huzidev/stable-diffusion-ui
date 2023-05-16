@@ -31,20 +31,6 @@ export default function Form(): JSX.Element {
 
   console.log("latest Image", latestImageLink); 
 
-  // async function getLatestImage() {
-  //   try {
-  //     const response = await axios("http://localhost:8080/latest-img");
-  //     const data = response.data;
-  //     setLatestImage(data.image);
-  //   } catch (e) {
-  //     console.log("Error", e);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getLatestImage()
-  // }, [])
-
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
   };
