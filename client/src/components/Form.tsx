@@ -3,7 +3,7 @@ import type { MenuProps } from "antd";
 import { Button, Checkbox, Dropdown, Image, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
 import { getImage } from "../store/image/getImage";
@@ -19,6 +19,13 @@ export default function Form(): JSX.Element {
   const dispatch = useAppDispatch();
   const latestImageLink = useAppSelector(state => state.image);
   
+  console.log("latest Image", latestImageLink.imageLink);
+  
+  useEffect(() => {
+    setLatestImage(latestImageLink.imageLink);
+    dispatch(getImage());
+  }, [])
+
   // async function getLatestImage() {
   //   try {
   //     const response = await axios("http://localhost:8080/latest-img");
@@ -75,13 +82,6 @@ export default function Form(): JSX.Element {
     }
   };
 
-  async function getImageToShow() {
-    // setLatestImage(latestImageLink);
-    dispatch(getImage());
-  }
-
-  console.log("Mehtods", methods);
-  console.log("Models", models);
 
   return (
     <div>
@@ -173,9 +173,6 @@ export default function Form(): JSX.Element {
         </Button>
         <Button onClick={getAllMethods}>
           Get Methods
-        </Button>
-        <Button onClick={getImageToShow}>
-          Show latest image
         </Button>
     </div>
   )
