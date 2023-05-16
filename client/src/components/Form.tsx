@@ -2,6 +2,7 @@ import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Checkbox, Dropdown, Image, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
@@ -14,6 +15,7 @@ export default function Form(): JSX.Element {
   const [prompt, setPrompt] = useState<DataType>({ prompts: "" });
   const [latestImage, setLatestImage] = useState('');
   const [visible, setVisible] = useState(false);
+  const [methods, setMethods] = useState<string[]>([]);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -23,6 +25,19 @@ export default function Form(): JSX.Element {
         setLatestImage(data.image);
       });
   }, [])
+
+  useEffect(() => {
+    async function getMethods() {
+      try {
+        const resp = await axios("/api/data")
+        const arrayOfStrings = await resp.json();
+        setMethods(arrayOfStrings);
+      } catch (e) {
+        console.log("Error", e);
+      }
+    };
+    getMethods();
+  }, []);
 
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
@@ -131,7 +146,6 @@ export default function Form(): JSX.Element {
         <Image
             preview={{ visible: false }}
             width={200}
-            // src={`http://localhost:8080/uploads/${latestImage}`}
             src={`http://localhost:8080/images/${latestImage}`}
             onClick={() => setVisible(true)}
           />
