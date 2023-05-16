@@ -8,7 +8,7 @@ import { generateImg } from "../store/form/data";
 import { useAppDispatch } from "../store/hooks/hooks";
 import { DataType } from "./Types";
  
-export default function Form(): JSX.Element {
+export default async async function Form(): Promise<Promise<JSX.Element>> {
   const { TextArea } = Input;
   const [prompt, setPrompt] = useState<DataType>({ prompts: "" });
   const [latestImage, setLatestImage] = useState('');
@@ -17,14 +17,21 @@ export default function Form(): JSX.Element {
   const [models, setModels] = useState<string[]>([]);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    fetch("http://localhost:8080/latest-img")
-      .then((response) => response.json())
-      .then((data) => {
-        setLatestImage(data.image);
-      });
-  }, [])
 
+  async function getLatestImage() {
+    try {
+      const response = await axios("http://localhost:8080/latest-img");
+      console.log("response for images", response);
+      const data = response.data;
+      setLatestImage(data);
+    } catch (e) {
+      console.log("Error", e);
+    }
+  }
+
+  useEffect(() => {
+    getLatestImage()
+  }, [])
 
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
