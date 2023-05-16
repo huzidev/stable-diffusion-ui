@@ -56,7 +56,7 @@ export default function Form(): JSX.Element {
     key: index.toString()
   }));
 
-  const sdModels: MenuProps["items"] = modelsList;
+  const items: MenuProps["items"] = modelsList;
   const samplers: MenuProps["items"] = itemsList;
 
   function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -82,7 +82,7 @@ export default function Form(): JSX.Element {
   return (
     <div>
       {/* Drop down for models */}
-       <Dropdown menu={{ sdModels }} trigger={["click"]}>
+       <Dropdown menu={{ items, selectable: true }}  trigger={["click"]}>
          <a onClick={(e) => e.preventDefault()}>
            <Space>
              Select Models
@@ -109,7 +109,7 @@ export default function Form(): JSX.Element {
        <Slider defaultValue={30} min={0} max={150}/>
        
        {/* dropdown for sampling methods */}
-       <Dropdown menu={{ samplers }} trigger={["click"]}>
+       <Dropdown menu={{ items }} trigger={["click"]}>
          <a onClick={(e) => e.preventDefault()}>
            <Space>
              Sampling Methods
