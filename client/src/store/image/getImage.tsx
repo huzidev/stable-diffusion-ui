@@ -32,3 +32,7 @@ const getImageSlice = createSlice({
         })
     }
 })
+
+export default getImageSlice.reducer;
+
+export const imageAction = getImageSlice.actions;
