@@ -49,8 +49,7 @@ export default function Form(): JSX.Element {
   let itemsList: any = methods.map((elements, index) => ({
     label: elements,
     key: index.toString()
-  }
-  ));
+  }));
 
   console.log("items", itemsList);
 
@@ -167,9 +166,6 @@ export default function Form(): JSX.Element {
         <Button onClick={getAllMethods}>
           Get Methods
         </Button>
-        {/* <Button onClick={test}>
-          Run this
-        </Button> */}
     </div>
   )
 
