@@ -70,8 +70,8 @@ export default function Form(): JSX.Element {
     }
   };
 
-
   console.log("Mehtods", methods);
+  console.log("Models", models);
 
   return (
     <div>
