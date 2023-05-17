@@ -11,12 +11,15 @@ import { PromptState } from "./types";
  
 export default function Form(): JSX.Element {
   const { TextArea } = Input;
-  const [prompt, setPrompt] = useState<PromptState>({ prompts: "" });
+  const [prompt, setPrompt] = useState<PromptState>({ 
+    prompts: "",
+    steps: null
+   });
   const [latestImage, setLatestImage] = useState('');
   const [visible, setVisible] = useState<boolean>(false);
   const [methods, setMethods] = useState<string[]>([]);
   const [getModels, setGetModels] = useState<string[]>([]);
-  const [steps, getSteps] = useState();
+  const [steps, setGetSteps] = useState<number | null>(null);
   const dispatch = useAppDispatch();
   const latestImageLink = useAppSelector(state => state.image.imageLink);
 
@@ -102,9 +105,14 @@ export default function Form(): JSX.Element {
         placeholder="Enter yours prompt"
         rows={4} 
        />
-       
+        
        {/* slider for sampling steps */}
-       <Slider defaultValue={30} min={0} max={150}/>
+       <Slider 
+        min={0} 
+        max={150}
+        defaultValue={30} 
+        onChange={(v) => setGetSteps(v)} 
+       />
        
        {/* dropdown for sampling methods */}
        <Dropdown menu={samplers} trigger={["click"]}>
