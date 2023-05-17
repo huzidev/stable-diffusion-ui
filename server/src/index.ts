@@ -5,6 +5,7 @@ const server: Express  = express();
 const port = 8080;
 const auth = require("../router/auth/auth");
 const image = require("../router/resp/image");
+const models = require("../router/sample/sample");
 
 server.use(cors({
     origin: "*"
@@ -13,6 +14,7 @@ server.use(cors({
 server.use(express.json());
 server.use(auth);
 server.use(image);
+server.use(models);
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended : true }));
