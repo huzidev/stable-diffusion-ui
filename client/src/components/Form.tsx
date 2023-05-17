@@ -14,7 +14,7 @@ export default function Form(): JSX.Element {
     steps: 30,
     width: 512,
     height: 512,
-    batch_count: 1,
+    n_iter: 1,
     cfg_scale: 7,
     restore_faces: false
   }
@@ -157,7 +157,7 @@ export default function Form(): JSX.Element {
         Batch Count
        </Typography.Text>
        <Slider
-        onChange={(v) => setSettings({ ...settings, batch_count: v })}
+        onChange={(v) => setSettings({ ...settings, n_iter: v })}
         defaultValue={1} 
         min={1} 
         max={5}

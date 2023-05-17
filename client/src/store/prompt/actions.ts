@@ -5,14 +5,14 @@ import { JsonState } from "./types";
 
 export const generateImg = createAsyncThunk(endpoints.FORM, async (settings: any) => {
     console.log("prompt from redux", settings);
-    const { prompt, steps, cfg_scale, restore_faces, batch_count, width, height } = settings;
+    const { prompt, steps, cfg_scale, restore_faces, n_iter, width, height } = settings;
     try {
         var data: JsonState = {
             prompt,
             steps,
             cfg_scale,
             restore_faces,
-            batch_count,
+            n_iter,
             width,
             height
         };
