@@ -1,13 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// const initialState: Credentials = {
-//     loading: false,
-//     res: "",
-//     error: ''
-// }
-
-
 export const generateImg = createAsyncThunk('form/data', async (prompt: any) => {
     const { prompts } = prompt;
     try {
