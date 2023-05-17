@@ -20,7 +20,7 @@ router.post(endpoints.GENERATE_IMAGE, async (req: Request, res: Response) => {
         cfg_scale,
         sampler_name,
         restore_faces,
-    }
+    };
     
     var data = JSON.stringify(jsonData);
     
