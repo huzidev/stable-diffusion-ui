@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import * as endpoints from "./endpoints";
-import { DataType } from "./types";
+import { ImageAddress } from "./types";
 
-const initialState: DataType = {
+const initialState: ImageAddress = {
     imageLink: 'no image here'    
 }
 
