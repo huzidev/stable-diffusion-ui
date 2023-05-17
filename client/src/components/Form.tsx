@@ -46,8 +46,8 @@ export default function Form(): JSX.Element {
     }
   };
   
-  let modelsList: any = getModels.map((model, index) => ({
-    label: <a onClick={() => console.log(`clicked on ${model}`)}>{model}</a>,
+  let modelsList: any = getModels.map((ele, index) => ({
+    label: <a onClick={() => setModel(ele)}>{ele}</a>,
     key: index.toString(),
   }));
 
@@ -76,6 +76,7 @@ export default function Form(): JSX.Element {
   }, [latestImageLink])
 
   console.log("settings", settings);
+  console.log("User has selected this model", model);
   
   return (
     <div>
@@ -88,7 +89,7 @@ export default function Form(): JSX.Element {
         trigger={["click"]}
        >
         <Button>
-          {settings}
+          { model === "" ? <Typography.Text>Select Model</Typography.Text> : model }
         </Button>
        </Dropdown>
        
