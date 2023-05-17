@@ -1,14 +1,17 @@
 import express, { Request, Response } from 'express';
+import * as endpoints from "./endpoints";
+import { PromptState } from './types';
 const img = require("./config");
 
 const router = express.Router();
 
 let latestImage: any = "";
-router.post("/generate", async (req: Request, res: Response) => {
+
+router.post(endpoints.GENERATE_IMAGE, async (req: Request, res: Response) => {
     const { prompt, steps, cfg_scale, restore_faces, n_iter, sampler_name, width, height } = req.body;
     console.log("req", req.body);
     
-    var data = JSON.stringify({
+    const jsonData: PromptState = {
         prompt,
         steps,
         cfg_scale,
@@ -17,8 +20,9 @@ router.post("/generate", async (req: Request, res: Response) => {
         restore_faces,
         n_iter,
         sampler_name,
-        "seed": -1,
-    });
+    }
+
+    var data = JSON.stringify(jsonData);
     const config = {
         method: 'post',  
         url: 'http://127.0.0.1:7860/sdapi/v1/txt2img',
