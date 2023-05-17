@@ -9,14 +9,14 @@ import { PromptState } from "./types";
  
 export default function Form(): JSX.Element { 
   const initialState = {
-    prompt: "",
+    prompt: '',
     steps: 30,
     width: 512,
     height: 512,
     n_iter: 1,
     cfg_scale: 7,
     restore_faces: false,
-    sampler_name: ''
+    sampler_name: "Euler a"
   }
 
   const { TextArea } = Input;
@@ -121,10 +121,10 @@ export default function Form(): JSX.Element {
        >
         <Button>
            <Space>
-             {settings.sampler_name}
-             <DownOutlined />
+              {settings.sampler_name}
            </Space>
         </Button>
+        <DownOutlined />
        </Dropdown>
        
        {/* check box for restore faces */}
