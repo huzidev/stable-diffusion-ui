@@ -1,3 +1,3 @@
-export interface DataType {
+export interface PromptState {
     prompts: string,
 }

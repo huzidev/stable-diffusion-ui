@@ -4,14 +4,14 @@ import { Button, Checkbox, Dropdown, Image, Input, Slider, Space, Typography } f
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { generateImg } from "../store/form/actions";
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
 import { getImage } from "../store/image/actions";
-import { DataType } from "./Types";
+import { generateImg } from "../store/prompt/actions";
+import { PromptState } from "./types";
  
 export default function Form(): JSX.Element {
   const { TextArea } = Input;
-  const [prompt, setPrompt] = useState<DataType>({ prompts: "" });
+  const [prompt, setPrompt] = useState<PromptState>({ prompts: "" });
   const [latestImage, setLatestImage] = useState('');
   const [visible, setVisible] = useState<boolean>(false);
   const [methods, setMethods] = useState<string[]>([]);
