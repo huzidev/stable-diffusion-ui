@@ -56,12 +56,9 @@ export default function Form(): JSX.Element {
     key: index.toString()
   }));
 
-
   const models: MenuProps = { items: modelsList};
   const samplers: MenuProps = { items: samplersList};
 
-  console.log(samplers);
-  
   function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setSettings({
       ...settings,
