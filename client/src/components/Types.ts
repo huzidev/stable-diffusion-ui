@@ -6,4 +6,5 @@ export interface PromptState {
     height: number;
     n_iter: number;
     cfg_scale: number;
+    sampler_name: string;
 }

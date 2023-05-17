@@ -16,7 +16,8 @@ export default function Form(): JSX.Element {
     height: 512,
     n_iter: 1,
     cfg_scale: 7,
-    restore_faces: false
+    restore_faces: false,
+    sampler_name: ''
   }
 
   const { TextArea } = Input;
@@ -117,7 +118,7 @@ export default function Form(): JSX.Element {
         menu={samplers} 
         trigger={["click"]}
        >
-         <a onClick={(e) => e.preventDefault()}>
+         <a onClick={(v) => setSettings({ ...settings,  })}>
            <Space>
              Sampling Methods
              <DownOutlined />
