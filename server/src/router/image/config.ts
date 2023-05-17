@@ -2,7 +2,7 @@ import axios from "axios";
 import fs from "fs";
 import path from "path";
 
-module.exports.generateImg = async function generateImg(config: any) {
+async function generateImg(config: any) {
     try {
         let latestImage: any = "";
         const result = await axios(config);
@@ -19,3 +19,5 @@ module.exports.generateImg = async function generateImg(config: any) {
         console.log("Error", e);
     }
 }
+
+module.exports.generateImg = generateImg;
