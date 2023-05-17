@@ -89,7 +89,7 @@ export default function Form(): JSX.Element {
         trigger={["click"]}
        >
         <Button>
-          { model === "" ? <Typography.Text>Select Model</Typography.Text> : model }
+          { model === '' ? <Typography.Text>Select Model</Typography.Text> : model }
         </Button>
        </Dropdown>
        
