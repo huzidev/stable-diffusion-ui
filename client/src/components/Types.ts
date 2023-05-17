@@ -1,3 +1,3 @@
 export interface PromptState {
-    prompts: string,
+    prompts: string
 }
