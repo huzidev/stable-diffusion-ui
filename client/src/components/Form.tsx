@@ -143,13 +143,23 @@ export default function Form(): JSX.Element {
        <Typography.Text>
         Width
        </Typography.Text>
-       <Slider defaultValue={512} min={256} max={768}/>
+       <Slider 
+        onChange={(v) => setPrompt({ ...prompt, width: v })}
+        defaultValue={512} 
+        min={256} 
+        max={768}
+       />
        
        {/* slider for height */}
        <Typography.Text>
         height
        </Typography.Text>
-       <Slider defaultValue={512} min={256} max={768}/>
+       <Slider 
+        onChange={(v) => setPrompt({ ...prompt, height: v })}
+        defaultValue={512} 
+        min={256} 
+        max={768}
+       />
 
        {/* batch count */}
        <Typography.Text>
