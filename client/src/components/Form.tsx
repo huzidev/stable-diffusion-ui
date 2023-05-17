@@ -14,7 +14,7 @@ export default function Form(): JSX.Element {
     steps: 30,
     width: 512,
     height: 512,
-    batch_size: 1,
+    batch_count: 1,
     cfg_scale: 7,
     restore_faces: false
   }
@@ -124,7 +124,7 @@ export default function Form(): JSX.Element {
        
        {/* check box for restore faces */}
        <Checkbox 
-        onChange={() => setSettings({ ...settings, restore: !settings.restore })}
+        onChange={() => setSettings({ ...settings, restore_faces: !settings.restore_faces })}
        >
         Restore Faces
        </Checkbox>
@@ -157,7 +157,7 @@ export default function Form(): JSX.Element {
         Batch Count
        </Typography.Text>
        <Slider
-        onChange={(v) => setSettings({ ...settings, batch: v })}
+        onChange={(v) => setSettings({ ...settings, batch_count: v })}
         defaultValue={1} 
         min={1} 
         max={5}
@@ -168,7 +168,7 @@ export default function Form(): JSX.Element {
         CFG Scale
        </Typography.Text>
        <Slider 
-        onChange={(v) => setSettings({ ...settings, cfg: v })}
+        onChange={(v) => setSettings({ ...settings, cfg_scale: v })}
         defaultValue={7} 
         min={1} 
         max={30} 
