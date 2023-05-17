@@ -21,6 +21,7 @@ export default function Form(): JSX.Element {
   const { TextArea } = Input;
   const [settings, setSettings] = useState<PromptState>(initialState);
   const [latestImage, setLatestImage] = useState('');
+  const [model, setModel] = useState<string>('');
   const [visible, setVisible] = useState<boolean>(false);
   const [methods, setMethods] = useState<string[]>([]);
   const [getModels, setGetModels] = useState<string[]>([]);
