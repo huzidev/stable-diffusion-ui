@@ -2,7 +2,6 @@ import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Checkbox, Dropdown, Image, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
-import { ItemType } from "antd/es/menu/hooks/useItems";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
@@ -16,7 +15,7 @@ export default function Form(): JSX.Element {
   const [latestImage, setLatestImage] = useState('');
   const [visible, setVisible] = useState<boolean>(false);
   const [methods, setMethods] = useState<string[]>([]);
-  const [models, setModels] = useState<string[]>([]);
+  const [getModels, setGetModels] = useState<string[]>([]);
   const dispatch = useAppDispatch();
   const latestImageLink = useAppSelector(state => state.image.imageLink);
 
@@ -32,7 +31,7 @@ export default function Form(): JSX.Element {
   async function getAllModels() {
     try {
       const resp = await axios.get<string[]>('http://localhost:8080/models');
-      setModels(resp.data);
+      setGetModels(resp.data);
     } catch (e) {
       console.log("Error", e);
     }
@@ -47,7 +46,7 @@ export default function Form(): JSX.Element {
     }
   };
   
-  let modelsList: any = models.map((model, index) => ({
+  let modelsList: any = getModels.map((model, index) => ({
     label: model,
     key: index.toString()
   }));
@@ -58,8 +57,7 @@ export default function Form(): JSX.Element {
   }));
 
 
-  const items: MenuProps["items"] = modelsList;
-  const parsed:ItemType[] =[]; 
+  const models: MenuProps = { items: modelsList};
   const samplers: MenuProps = { items: samplersList};
 
   console.log(samplers);
@@ -90,7 +88,7 @@ export default function Form(): JSX.Element {
   return (
     <div>
       {/* Drop down for models */}
-       <Dropdown menu={{ items, selectable: true }} trigger={["click"]}>
+       <Dropdown menu={models} trigger={["click"]}>
          <a onClick={(e) => e.preventDefault()}>
            <Space>
              Select Models
