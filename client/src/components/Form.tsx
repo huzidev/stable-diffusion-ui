@@ -47,7 +47,7 @@ export default function Form(): JSX.Element {
   };
   
   let modelsList: any = getModels.map((model, index) => ({
-    label: <a onClick={() => console.log(`clicked on ${sampler}`)}>{sampler}</a>,
+    label: <a onClick={() => console.log(`clicked on ${model}`)}>{model}</a>,
     key: index.toString(),
   }));
 
@@ -81,12 +81,12 @@ export default function Form(): JSX.Element {
     <div>
       {/* Drop down for models */}
        <Dropdown menu={models} trigger={["click"]}>
-         <a onClick={(e) => e.preventDefault()}>
+         <Button>
            <Space>
              Select Models
              <DownOutlined />
            </Space>
-         </a>
+         </Button>
        </Dropdown>
        
        {/* Generate Image button */}
