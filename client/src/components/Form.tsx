@@ -2,6 +2,7 @@ import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Checkbox, Dropdown, Image, Input, Slider, Space, Typography } from "antd";
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
+import { ItemType } from "antd/es/menu/hooks/useItems";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
@@ -46,18 +47,23 @@ export default function Form(): JSX.Element {
     }
   };
   
-  let samplersList: any = methods.map((sampler, index) => ({
-    label: sampler,
-    key: index.toString()
-  }));
-
   let modelsList: any = models.map((model, index) => ({
     label: model,
     key: index.toString()
   }));
 
+  let samplersList: any = methods.map((sampler, index) => ({
+    label: sampler,
+    key: index.toString()
+  }));
+
+
   const items: MenuProps["items"] = modelsList;
-  const samplers: MenuProps["items"] = samplersList;
+  const parsed:ItemType[] =[]; 
+  const samplers: MenuProps = { items: samplersList};
+
+  console.log(samplers);
+  
 
   function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setPrompt({
@@ -76,6 +82,10 @@ export default function Form(): JSX.Element {
   useEffect(() => {
     setLatestImage(latestImageLink);
   }, [latestImageLink])
+
+  const obj = {
+    samplers: samplers,
+  }
 
   return (
     <div>
@@ -107,7 +117,7 @@ export default function Form(): JSX.Element {
        <Slider defaultValue={30} min={0} max={150}/>
        
        {/* dropdown for sampling methods */}
-       <Dropdown menu={{ samplers }} trigger={["click"]}>
+       <Dropdown menu={samplers} trigger={["click"]}>
          <a onClick={(e) => e.preventDefault()}>
            <Space>
              Sampling Methods
