@@ -1,5 +1,4 @@
-import { DownOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Dropdown, Image, Input, MenuProps, Slider, Space, Typography } from "antd";
+import { Button, Checkbox, Dropdown, Image, Input, MenuProps, Slider, Typography } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
@@ -82,10 +81,7 @@ export default function Form(): JSX.Element {
       {/* Drop down for models */}
        <Dropdown menu={models} trigger={["click"]}>
          <Button>
-           <Space>
              Select Models
-             <DownOutlined />
-           </Space>
          </Button>
        </Dropdown>
        
@@ -120,13 +116,9 @@ export default function Form(): JSX.Element {
         trigger={["click"]}
        >
         <Button>
-           <Space>
               {settings.sampler_name}
-           </Space>
         </Button>
-        <DownOutlined />
        </Dropdown>
-       
        {/* check box for restore faces */}
        <Checkbox 
         onChange={() => setSettings({ ...settings, restore_faces: !settings.restore_faces })}
