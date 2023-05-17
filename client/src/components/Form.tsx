@@ -121,7 +121,7 @@ export default function Form(): JSX.Element {
        >
         <Button>
            <Space>
-             Sampling Methods
+             {settings.sampler_name}
              <DownOutlined />
            </Space>
         </Button>
