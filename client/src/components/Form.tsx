@@ -19,11 +19,6 @@ export default function Form(): JSX.Element {
   const dispatch = useAppDispatch();
   const latestImageLink = useAppSelector(state => state.image.imageLink);
 
-  // useEffect(() => {
-    
-  //   // setLatestImage(latestImage);
-  // }, [])
-  
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
   };
