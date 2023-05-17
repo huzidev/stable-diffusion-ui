@@ -9,12 +9,14 @@ import { getImage } from "../store/image/actions";
 import { generateImg } from "../store/prompt/actions";
 import { PromptState } from "./types";
  
-export default function Form(): JSX.Element {
-  const { TextArea } = Input;
-  const [prompt, setPrompt] = useState<PromptState>({ 
+export default function Form(): JSX.Element { 
+  const initialState = {
     prompts: "",
     steps: null
-   });
+  }
+
+  const { TextArea } = Input;
+  const [prompt, setPrompt] = useState<PromptState>(initialState);
   const [latestImage, setLatestImage] = useState('');
   const [visible, setVisible] = useState<boolean>(false);
   const [methods, setMethods] = useState<string[]>([]);
@@ -80,6 +82,8 @@ export default function Form(): JSX.Element {
     setLatestImage(latestImageLink);
   }, [latestImageLink])
 
+  console.log("Prompts setting", prompt);
+
   return (
     <div>
       {/* Drop down for models */}
@@ -111,7 +115,6 @@ export default function Form(): JSX.Element {
         min={0} 
         max={150}
         defaultValue={30} 
-        onChange={(v) => setGetSteps(v)} 
        />
        
        {/* dropdown for sampling methods */}
