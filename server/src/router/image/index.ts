@@ -14,19 +14,19 @@ router.post(endpoints.GENERATE_IMAGE, async (req: Request, res: Response) => {
     const jsonData: PromptState = {
         prompt,
         steps,
-        cfg_scale,
         width,
         height,
-        restore_faces,
         n_iter,
+        cfg_scale,
         sampler_name,
+        restore_faces,
     }
     
     var data = JSON.stringify(jsonData);
     
     const config = {
         method: 'post',  
-        url: 'http://127.0.0.1:7860/sdapi/v1/txt2img',
+        url: endpoints.API,
         headers: {
             'Content-Type': 'application/json'
         },
