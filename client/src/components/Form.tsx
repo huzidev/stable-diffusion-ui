@@ -16,6 +16,7 @@ export default function Form(): JSX.Element {
   const [visible, setVisible] = useState<boolean>(false);
   const [methods, setMethods] = useState<string[]>([]);
   const [getModels, setGetModels] = useState<string[]>([]);
+  const [steps, getSteps] = useState();
   const dispatch = useAppDispatch();
   const latestImageLink = useAppSelector(state => state.image.imageLink);
 
