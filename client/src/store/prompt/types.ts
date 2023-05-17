@@ -4,6 +4,6 @@ export interface JsonState {
     restore_faces: boolean;
     width: number;
     height: number;
-    batch_count: number;
+    n_iter: number;
     cfg_scale: number;
 }
