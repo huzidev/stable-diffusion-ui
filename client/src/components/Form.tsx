@@ -106,7 +106,7 @@ export default function Form(): JSX.Element {
        {/* text area for prompts */}
        <TextArea 
         name="prompts"
-        value={settings.prompts}
+        value={settings.prompt}
         onChange={inputHandler}
         placeholder="Enter yours prompt"
         rows={4} 
