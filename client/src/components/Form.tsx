@@ -69,15 +69,12 @@ export default function Form(): JSX.Element {
   function generate() {
     dispatch(generateImg(settings));
     dispatch(getImage());
-  }
+  };
 
   useEffect(() => {
     setLatestImage(latestImageLink);
   }, [latestImageLink])
 
-  console.log("settings", settings);
-  console.log("User has selected this model", model);
-  
   return (
     <div>
       {/* Drop down for models */}
