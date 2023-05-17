@@ -15,7 +15,8 @@ export default function Form(): JSX.Element {
     steps: 30,
     restore: false,
     width: 512,
-    height: 512
+    height: 512,
+    cfg: 7
   }
 
   const { TextArea } = Input;

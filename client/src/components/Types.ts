@@ -4,4 +4,5 @@ export interface PromptState {
     restore: boolean;
     width: number;
     height: number;
+    cfg: number
 }
