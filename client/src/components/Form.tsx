@@ -1,6 +1,5 @@
 import { DownOutlined } from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Button, Checkbox, Dropdown, Image, Input, Slider, Space, Typography } from "antd";
+import { Button, Checkbox, Dropdown, Image, Input, MenuProps, Slider, Space, Typography } from "antd";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
@@ -48,12 +47,12 @@ export default function Form(): JSX.Element {
   };
   
   let modelsList: any = getModels.map((model, index) => ({
-    label: model,
-    key: index.toString()
+    label: <a onClick={() => console.log(`clicked on ${sampler}`)}>{sampler}</a>,
+    key: index.toString(),
   }));
 
   let samplersList: any = methods.map((sampler, index) => ({
-    label: sampler,
+    label: <a onClick={() => console.log(`clicked on ${sampler}`)}>{sampler}</a>,
     key: index.toString()
   }));
 
@@ -76,6 +75,8 @@ export default function Form(): JSX.Element {
     setLatestImage(latestImageLink);
   }, [latestImageLink])
 
+  console.log("settings", settings);
+  
   return (
     <div>
       {/* Drop down for models */}
@@ -118,12 +119,12 @@ export default function Form(): JSX.Element {
         menu={samplers} 
         trigger={["click"]}
        >
-         <a onClick={(v) => setSettings({ ...settings,  })}>
+        <Button>
            <Space>
              Sampling Methods
              <DownOutlined />
            </Space>
-         </a>
+        </Button>
        </Dropdown>
        
        {/* check box for restore faces */}
