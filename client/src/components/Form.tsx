@@ -12,7 +12,8 @@ import { PromptState } from "./types";
 export default function Form(): JSX.Element { 
   const initialState = {
     prompts: "",
-    steps: null
+    steps: null,
+    restore: false,
   }
 
   const { TextArea } = Input;
@@ -112,10 +113,10 @@ export default function Form(): JSX.Element {
         
        {/* slider for sampling steps */}
        <Slider 
-        min={0} 
-        max={150}
-        defaultValue={30}
-        onChange={(v) => setPrompt({ ...prompt, steps: v })}
+          min={0} 
+          max={150}
+          defaultValue={30}
+          onChange={(v) => setPrompt({ ...prompt, steps: v })}
         />
        
        {/* dropdown for sampling methods */}
@@ -129,7 +130,9 @@ export default function Form(): JSX.Element {
        </Dropdown>
        
        {/* check box for restore faces */}
-       <Checkbox onChange={onChange}>
+       <Checkbox 
+        onChange={() => setPrompt({ ...prompt, restore: !prompt.restore })}
+       >
         Restore Faces
        </Checkbox>
 
