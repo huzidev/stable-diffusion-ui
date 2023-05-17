@@ -12,8 +12,10 @@ import { PromptState } from "./types";
 export default function Form(): JSX.Element { 
   const initialState = {
     prompts: "",
-    steps: null,
+    steps: 30,
     restore: false,
+    width: 512,
+    height: 512
   }
 
   const { TextArea } = Input;

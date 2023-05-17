@@ -1,5 +1,7 @@
 export interface PromptState {
     prompts: string;
-    steps: number | null;
+    steps: number;
     restore: boolean;
+    width: number;
+    height: number;
 }
