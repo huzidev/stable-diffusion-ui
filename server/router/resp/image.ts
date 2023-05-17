@@ -6,8 +6,8 @@ import path from "path";
 const router = express.Router();
 
 let latestImage: any = "";
-router.post("/generate", (req: Request, res: Response) => {
-    const { prompt, steps, cfg_scale, restore_faces, n_iter, width, height } = req.body;
+router.post("/generate", async (req: Request, res: Response) => {
+    const { prompt, steps, cfg_scale, restore_faces, n_iter, sampler_name, width, height } = req.body;
     console.log("req", req.body);
     
     var data = JSON.stringify({
@@ -17,8 +17,8 @@ router.post("/generate", (req: Request, res: Response) => {
         width,
         height,
         restore_faces,
-        "n_iter": 3,
-        "sampler_name": "Euler",
+        n_iter,
+        sampler_name,
         "seed": -1,
     });
     const config = {
@@ -29,24 +29,20 @@ router.post("/generate", (req: Request, res: Response) => {
         },
         data: data
     };
-    async function gen() {
-        try {
-            const result = await axios(config);
-            const { images, info } = result.data;
-            const filename = Date.now();
-            for (const image of images) {
-                const buffer = Buffer.from(image, "base64");
-                const imgPath = path.join(`images`, `${filename}.png`);
-                fs.writeFileSync(imgPath, buffer);
-                latestImage = `${filename}.png`;
-                console.log("latest image name", latestImage);
-            }
-        } catch (e) {
-            console.log("Error", e);
-            
+    try {
+        const result = await axios(config);
+        const { images, info } = result.data;
+        const filename = Date.now();
+        for (const image of images) {
+            const buffer = Buffer.from(image, "base64");
+            const imgPath = path.join(`images`, `${filename}.png`);
+            fs.writeFileSync(imgPath, buffer);
+            latestImage = `${filename}.png`;
+            console.log("latest image name", latestImage);
         }
+    } catch (e) {
+        console.log("Error", e);
     }
-    gen();
     res.status(200).send({ message: "Image generated succescully!" });
 });
 
