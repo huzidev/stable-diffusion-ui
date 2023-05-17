@@ -55,8 +55,8 @@ export default function Form(): JSX.Element {
     key: index.toString()
   }));
 
-  const models: MenuProps = { items: modelsList};
-  const samplers: MenuProps = { items: samplersList};
+  const models: MenuProps = { items: modelsList };
+  const samplers: MenuProps = { items: samplersList };
 
   function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setSettings({
@@ -79,10 +79,16 @@ export default function Form(): JSX.Element {
   return (
     <div>
       {/* Drop down for models */}
-       <Dropdown menu={models} trigger={["click"]}>
-         <Button>
-             Select Models
-         </Button>
+       <Dropdown
+        arrow
+        placement="bottomLeft"
+        autoAdjustOverflow={false}
+        menu={models} 
+        trigger={["click"]}
+       >
+        <Button>
+          {settings}
+        </Button>
        </Dropdown>
        
        {/* Generate Image button */}
@@ -116,7 +122,7 @@ export default function Form(): JSX.Element {
         trigger={["click"]}
        >
         <Button>
-              {settings.sampler_name}
+          {settings.sampler_name}
         </Button>
        </Dropdown>
        {/* check box for restore faces */}
