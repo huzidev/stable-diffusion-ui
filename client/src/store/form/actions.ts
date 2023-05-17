@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import * as endpoints from "./endpoints";
 
@@ -15,7 +15,6 @@ export const generateImg = createAsyncThunk(endpoints.FORM, async (prompt: any) 
             // "height": 512,
             // "seed": -1,
         });
-        
         const config = {
             method: 'post',
             url: endpoints.API,
@@ -24,18 +23,9 @@ export const generateImg = createAsyncThunk(endpoints.FORM, async (prompt: any) 
             },
             data: data
         };
-        const res = await axios(config);
+        await axios(config);
         console.log("generating image");
     } catch (e) {
         console.log("Error", e);
-        
     }
 })
-
-const imageSlice = createSlice({
-    name: "image",
-    initialState: {},
-    reducers: {},
-})
-
-export default imageSlice.reducer;
