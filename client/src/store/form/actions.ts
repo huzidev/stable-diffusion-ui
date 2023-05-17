@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import * as endpoints from "./endpoints";
 
-export const generateImg = createAsyncThunk('form/data', async (prompt: any) => {
+export const generateImg = createAsyncThunk(endpoints.FORM, async (prompt: any) => {
     const { prompts } = prompt;
     try {
         var data = JSON.stringify({
@@ -17,7 +18,7 @@ export const generateImg = createAsyncThunk('form/data', async (prompt: any) => 
         
         const config = {
             method: 'post',
-            url: "http://localhost:8080/generate",
+            url: endpoints.API,
             headers: {
                 'Content-Type': 'application/json'
             },

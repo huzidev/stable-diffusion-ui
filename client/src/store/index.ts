@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import imageReducer from "./form/data";
+import imageReducer from "./form/actions";
 import getImage from "./image/actions";
 
 const store = configureStore({
