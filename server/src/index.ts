@@ -3,9 +3,9 @@ import cors from "cors";
 import express, { Express, Request, Response } from 'express';
 const server: Express  = express();
 const port = 8080;
-const auth = require("../router/auth/auth");
-const image = require("../router/resp/image");
-const models = require("../router/sample/sample");
+const auth = require("./router/resp/image");
+const image = require("./router/models/index");
+const models = require("./router/models/index");
 
 server.use(cors({
     origin: "*"

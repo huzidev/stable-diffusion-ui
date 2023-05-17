@@ -1,7 +1,5 @@
-import axios from "axios";
 import express, { Request, Response } from 'express';
-import fs from "fs";
-import path from "path";
+const img = require("./config");
 
 const router = express.Router();
 
@@ -29,20 +27,21 @@ router.post("/generate", async (req: Request, res: Response) => {
         },
         data: data
     };
-    try {
-        const result = await axios(config);
-        const { images, info } = result.data;
-        const filename = Date.now();
-        for (const image of images) {
-            const buffer = Buffer.from(image, "base64");
-            const imgPath = path.join(`images`, `${filename}.png`);
-            fs.writeFileSync(imgPath, buffer);
-            latestImage = `${filename}.png`;
-            console.log("latest image name", latestImage);
-        }
-    } catch (e) {
-        console.log("Error", e);
-    }
+    img.generateImg(config);
+    // try {
+    //     const result = await axios(config);
+    //     const { images, info } = result.data;
+    //     const filename = Date.now();
+    //     for (const image of images) {
+    //         const buffer = Buffer.from(image, "base64");
+    //         const imgPath = path.join(`images`, `${filename}.png`);
+    //         fs.writeFileSync(imgPath, buffer);
+    //         latestImage = `${filename}.png`;
+    //         console.log("latest image name", latestImage);
+    //     }
+    // } catch (e) {
+    //     console.log("Error", e);
+    // }
     res.status(200).send({ message: "Image generated succescully!" });
 });
 
