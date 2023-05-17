@@ -7,19 +7,20 @@ const router = express.Router();
 
 let latestImage: any = "";
 router.post("/generate", (req: Request, res: Response) => {
-    const { prompt } = req.body;
-    console.log("resp", prompt);
+    const { prompt, steps, cfg_scale, restore_faces, n_iter, width, height } = req.body;
+    console.log("req", req.body);
+    
     var data = JSON.stringify({
         prompt,
-        "steps": 30,
-        "cfg_scale": 7,
-        "sampler_name": "Heun",
-        "batch_size": 1,
-        "width": 512,
-        "height": 512,
+        steps,
+        cfg_scale,
+        width,
+        height,
+        restore_faces,
+        "n_iter": 3,
+        "sampler_name": "Euler",
         "seed": -1,
     });
-    
     const config = {
         method: 'post',  
         url: 'http://127.0.0.1:7860/sdapi/v1/txt2img',
