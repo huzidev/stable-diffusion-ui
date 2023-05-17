@@ -110,7 +110,13 @@ export default function Form(): JSX.Element {
         />
        
        {/* dropdown for sampling methods */}
-       <Dropdown menu={samplers} trigger={["click"]}>
+       <Dropdown
+        arrow
+        placement="bottomLeft"
+        autoAdjustOverflow={false}
+        menu={samplers} 
+        trigger={["click"]}
+       >
          <a onClick={(e) => e.preventDefault()}>
            <Space>
              Sampling Methods
