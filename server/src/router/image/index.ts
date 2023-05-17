@@ -21,8 +21,9 @@ router.post(endpoints.GENERATE_IMAGE, async (req: Request, res: Response) => {
         n_iter,
         sampler_name,
     }
-
+    
     var data = JSON.stringify(jsonData);
+    
     const config = {
         method: 'post',  
         url: 'http://127.0.0.1:7860/sdapi/v1/txt2img',
@@ -32,23 +33,8 @@ router.post(endpoints.GENERATE_IMAGE, async (req: Request, res: Response) => {
         data: data
     };
     img.generateImg(config);
-    // try {
-    //     const result = await axios(config);
-    //     const { images, info } = result.data;
-    //     const filename = Date.now();
-    //     for (const image of images) {
-    //         const buffer = Buffer.from(image, "base64");
-    //         const imgPath = path.join(`images`, `${filename}.png`);
-    //         fs.writeFileSync(imgPath, buffer);
-    //         latestImage = `${filename}.png`;
-    //         console.log("latest image name", latestImage);
-    //     }
-    // } catch (e) {
-    //     console.log("Error", e);
-    // }
     res.status(200).send({ message: "Image generated succescully!" });
 });
-
 
 router.get("/latest-img", (req: Request, res: Response) => {
     res.status(202).json({ image: latestImage })
