@@ -46,7 +46,7 @@ export default function Form(): JSX.Element {
     }
   };
   
-  let itemsList: any = methods.map((sampler, index) => ({
+  let samplersList: any = methods.map((sampler, index) => ({
     label: sampler,
     key: index.toString()
   }));
@@ -57,7 +57,7 @@ export default function Form(): JSX.Element {
   }));
 
   const items: MenuProps["items"] = modelsList;
-  const samplers: MenuProps["items"] = itemsList;
+  const samplers: MenuProps["items"] = samplersList;
 
   function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setPrompt({
@@ -107,7 +107,7 @@ export default function Form(): JSX.Element {
        <Slider defaultValue={30} min={0} max={150}/>
        
        {/* dropdown for sampling methods */}
-       <Dropdown menu={{ items }} trigger={["click"]}>
+       <Dropdown menu={{ samplers }} trigger={["click"]}>
          <a onClick={(e) => e.preventDefault()}>
            <Space>
              Sampling Methods
