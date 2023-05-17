@@ -52,7 +52,7 @@ export default function Form(): JSX.Element {
   }));
 
   let samplersList: any = methods.map((sampler, index) => ({
-    label: <a onClick={() => console.log(`clicked on ${sampler}`)}>{sampler}</a>,
+    label: <a onClick={() => setSettings({ ...settings, sampler_name: sampler })}>{sampler}</a>,
     key: index.toString()
   }));
 
