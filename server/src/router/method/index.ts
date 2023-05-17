@@ -1,17 +1,12 @@
 import axios, { AxiosResponse } from "axios";
 import express, { Request, Response } from 'express';
+import { config } from "./config";
+import * as endpoints from "./endpoints";
 
 const router = express.Router();
 
-router.get("/methods", async (req: Request, res: Response) => {
+router.get(endpoints.METHOD, async (req: Request, res: Response) => {
     try {
-        const config = {
-            method: 'get',  
-            url: 'http://127.0.0.1:7860/sdapi/v1/samplers',
-            headers: {  
-                'Content-Type': 'application/json'
-            }
-        };
         const response: AxiosResponse<any[]> = await axios(config);
         let samples = response.data;
         const newArr = samples.map((obj) => obj.name);
