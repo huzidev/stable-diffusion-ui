@@ -114,8 +114,9 @@ export default function Form(): JSX.Element {
        <Slider 
         min={0} 
         max={150}
-        defaultValue={30} 
-       />
+        defaultValue={30}
+        onChange={(v) => setPrompt({ ...prompt, steps: v })}
+        />
        
        {/* dropdown for sampling methods */}
        <Dropdown menu={samplers} trigger={["click"]}>
