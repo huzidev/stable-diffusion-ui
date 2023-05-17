@@ -1,7 +1,6 @@
 import { DownOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Button, Checkbox, Dropdown, Image, Input, Slider, Space, Typography } from "antd";
-import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
@@ -13,11 +12,11 @@ export default function Form(): JSX.Element {
   const initialState = {
     prompt: "",
     steps: 30,
-    restore: false,
     width: 512,
     height: 512,
-    batch: 1,
-    cfg: 7
+    batch_size: 1,
+    cfg_scale: 7,
+    restore_faces: false
   }
 
   const { TextArea } = Input;
@@ -28,10 +27,6 @@ export default function Form(): JSX.Element {
   const [getModels, setGetModels] = useState<string[]>([]);
   const dispatch = useAppDispatch();
   const latestImageLink = useAppSelector(state => state.image.imageLink);
-
-  const onChange = (e: CheckboxChangeEvent) => {
-    console.log(`checked = ${e.target.checked}`);
-  };
 
   async function getAllModels() {
     try {
@@ -67,7 +62,6 @@ export default function Form(): JSX.Element {
 
   console.log(samplers);
   
-
   function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setSettings({
       ...settings,
@@ -83,8 +77,6 @@ export default function Form(): JSX.Element {
   useEffect(() => {
     setLatestImage(latestImageLink);
   }, [latestImageLink])
-
-  console.log("Prompts setting", settings);
 
   return (
     <div>
@@ -105,7 +97,7 @@ export default function Form(): JSX.Element {
        
        {/* text area for prompts */}
        <TextArea 
-        name="prompts"
+        name="prompt"
         value={settings.prompt}
         onChange={inputHandler}
         placeholder="Enter yours prompt"
@@ -195,7 +187,6 @@ export default function Form(): JSX.Element {
        }
         <div style={{ display: 'none' }}>
           <Image.PreviewGroup preview={{ visible, onVisibleChange: vis => setVisible(vis)}}>
-            {/* <Image src="/images/1684145516113.png" /> */}
             {latestImage && <Image src={`http://localhost:8080/images/${latestImage}`} />}
           </Image.PreviewGroup>
         </div>

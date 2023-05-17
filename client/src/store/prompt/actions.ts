@@ -5,6 +5,7 @@ import { JsonState } from "./types";
 
 export const generateImg = createAsyncThunk(endpoints.FORM, async (prompt: any) => {
     const { prompts } = prompt;
+    console.log("prompt from redux", prompt);
     try {
         var data: JsonState = {
             "prompt": prompts,
