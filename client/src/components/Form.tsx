@@ -16,6 +16,7 @@ export default function Form(): JSX.Element {
     restore: false,
     width: 512,
     height: 512,
+    batch: 1,
     cfg: 7
   }
 
@@ -172,7 +173,13 @@ export default function Form(): JSX.Element {
       <Typography.Text>
         CFG Scale
        </Typography.Text>
-       <Slider defaultValue={7} min={1} max={30} step={0.5}/>
+       <Slider 
+        onChange={(v) => setPrompt({ ...prompt, cfg: v })}
+        defaultValue={7} 
+        min={1} 
+        max={30} 
+        step={0.5}
+       />
        <Button onClick={generate}>
         Generate Image
        </Button>
