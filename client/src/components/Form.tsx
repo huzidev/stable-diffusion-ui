@@ -16,7 +16,7 @@ export default function Form(): JSX.Element {
     cfg_scale: 7,
     restore_faces: false,
     sampler_name: "Euler a"
-  }
+  };  
 
   const { TextArea } = Input;
   const [settings, setSettings] = useState<PromptState>(initialState);
@@ -50,7 +50,7 @@ export default function Form(): JSX.Element {
     label: <a onClick={() => setModel(ele)}>{ele}</a>,
     key: index.toString(),
   }));
-
+  
   let samplersList: any = methods.map((sampler, index) => ({
     label: <a onClick={() => setSettings({ ...settings, sampler_name: sampler })}>{sampler}</a>,
     key: index.toString()
