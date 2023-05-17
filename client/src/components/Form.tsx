@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { generateImg } from "../store/form/data";
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks";
-import { getImage } from "../store/image/getImage";
+import { getImage } from "../store/image/actions";
 import { DataType } from "./Types";
  
 export default function Form(): JSX.Element {
