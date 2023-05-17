@@ -1,9 +1,9 @@
 export interface PromptState {
-    prompts: string;
+    prompt: string;
     steps: number;
     restore: boolean;
     width: number;
     height: number;
-    batch: number
-    cfg: number
+    batch: number;
+    cfg: number;
 }

@@ -11,7 +11,7 @@ import { PromptState } from "./types";
  
 export default function Form(): JSX.Element { 
   const initialState = {
-    prompts: "",
+    prompt: "",
     steps: 30,
     restore: false,
     width: 512,
@@ -75,10 +75,8 @@ export default function Form(): JSX.Element {
     });
   };
 
-  const { prompts } = settings;
-
   function generate() {
-    dispatch(generateImg(prompt));
+    dispatch(generateImg(settings));
     dispatch(getImage());
   }
 
@@ -108,7 +106,7 @@ export default function Form(): JSX.Element {
        {/* text area for prompts */}
        <TextArea 
         name="prompts"
-        value={prompts}
+        value={settings.prompts}
         onChange={inputHandler}
         placeholder="Enter yours prompt"
         rows={4} 
