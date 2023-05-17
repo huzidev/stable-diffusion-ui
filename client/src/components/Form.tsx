@@ -167,7 +167,12 @@ export default function Form(): JSX.Element {
        <Typography.Text>
         Batch Count
        </Typography.Text>
-       <Slider defaultValue={1} min={1} max={5}/>
+       <Slider
+        onChange={(v) => setPrompt({ ...prompt, batch: v })}
+        defaultValue={1} 
+        min={1} 
+        max={5}
+       />
 
       {/* CFG scale */}
       <Typography.Text>
