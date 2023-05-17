@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import * as endpoints from "./endpoints";
-import { DataType } from "./types";
+import { JsonState } from "./types";
 
 export const generateImg = createAsyncThunk(endpoints.FORM, async (prompt: any) => {
     const { prompts } = prompt;
     try {
-        var data: DataType = {
+        var data: JsonState = {
             "prompt": prompts,
             // "steps": 5,
             // "cfg_scale": 7,
@@ -16,14 +16,13 @@ export const generateImg = createAsyncThunk(endpoints.FORM, async (prompt: any) 
             // "height": 512,
             // "seed": -1,
         };
-        var jsonString = JSON.stringify(data);
         const config = {
             method: 'post',
             url: endpoints.API,
             headers: {
                 'Content-Type': 'application/json'
             },
-            data: jsonString
+            data: JSON.stringify(data)
         };
         await axios(config);
         console.log("generating image");
