@@ -20,7 +20,7 @@ export default function Form(): JSX.Element {
   const latestImageLink = useAppSelector(state => state.image.imageLink);
 
   // useEffect(() => {
-  //   // dispatch(imageAction.testImag());
+    
   //   // setLatestImage(latestImage);
   // }, [])
   

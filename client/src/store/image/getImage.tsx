@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { DataType } from "./Types";
+import { DataType } from "./types";
 
 const initialState: DataType = {
     imageLink: 'no image here'    
@@ -19,12 +19,7 @@ export const getImage = createAsyncThunk("images/getImage", async () => {
 const getImageSlice = createSlice({
     name: "image",
     initialState,
-    reducers : {
-        // testImag(state) {
-        //     state.imageLink = testImg;
-        //     console.log("runing from redux");
-        // }
-    },
+    reducers : {},
     extraReducers: (builder) => {
         builder.addCase(getImage.fulfilled, (state, action) => {
             state.imageLink = action.payload;
