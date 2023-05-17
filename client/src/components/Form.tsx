@@ -81,10 +81,6 @@ export default function Form(): JSX.Element {
     setLatestImage(latestImageLink);
   }, [latestImageLink])
 
-  const obj = {
-    samplers: samplers,
-  }
-
   return (
     <div>
       {/* Drop down for models */}

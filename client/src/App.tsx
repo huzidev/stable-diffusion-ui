@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Routes
 } from "react-router-dom";
-import Form from "./Form";
+import Form from "./components/Form";
 
 export default function App(): JSX.Element {
   return (
