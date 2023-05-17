@@ -1,2 +1,2 @@
-export const HOST = "http://localhost:8080/";
+export const API = "http://localhost:8080/latest-img";
 export const IMAGE = "images/get_image";

@@ -1,14 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import * as endpoints from "./endpoints";
 import { DataType } from "./types";
 
 const initialState: DataType = {
     imageLink: 'no image here'    
 }
 
-export const getImage = createAsyncThunk("images/getImage", async () => {
+export const getImage = createAsyncThunk(endpoints.IMAGE, async () => {
     try {
-        const response = await axios("http://localhost:8080/latest-img");
+        const response = await axios(endpoints.API);
         const data = response.data;
         return data.image;
     } catch (e) {
