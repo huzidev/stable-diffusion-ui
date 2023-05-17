@@ -21,12 +21,11 @@ export default function Form(): JSX.Element {
   }
 
   const { TextArea } = Input;
-  const [prompt, setPrompt] = useState<PromptState>(initialState);
+  const [settings, setSettings] = useState<PromptState>(initialState);
   const [latestImage, setLatestImage] = useState('');
   const [visible, setVisible] = useState<boolean>(false);
   const [methods, setMethods] = useState<string[]>([]);
   const [getModels, setGetModels] = useState<string[]>([]);
-  const [steps, setGetSteps] = useState<number | null>(null);
   const dispatch = useAppDispatch();
   const latestImageLink = useAppSelector(state => state.image.imageLink);
 
@@ -70,13 +69,13 @@ export default function Form(): JSX.Element {
   
 
   function inputHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    setPrompt({
-      ...prompt,
+    setSettings({
+      ...settings,
       [e.target.name]: e.target.value
     });
   };
 
-  const { prompts } = prompt;
+  const { prompts } = settings;
 
   function generate() {
     dispatch(generateImg(prompt));
@@ -87,7 +86,7 @@ export default function Form(): JSX.Element {
     setLatestImage(latestImageLink);
   }, [latestImageLink])
 
-  console.log("Prompts setting", prompt);
+  console.log("Prompts setting", settings);
 
   return (
     <div>
@@ -120,7 +119,7 @@ export default function Form(): JSX.Element {
           min={0} 
           max={150}
           defaultValue={30}
-          onChange={(v) => setPrompt({ ...prompt, steps: v })}
+          onChange={(v) => setSettings({ ...settings, steps: v })}
         />
        
        {/* dropdown for sampling methods */}
@@ -135,7 +134,7 @@ export default function Form(): JSX.Element {
        
        {/* check box for restore faces */}
        <Checkbox 
-        onChange={() => setPrompt({ ...prompt, restore: !prompt.restore })}
+        onChange={() => setSettings({ ...settings, restore: !settings.restore })}
        >
         Restore Faces
        </Checkbox>
@@ -146,7 +145,7 @@ export default function Form(): JSX.Element {
         Width
        </Typography.Text>
        <Slider 
-        onChange={(v) => setPrompt({ ...prompt, width: v })}
+        onChange={(v) => setSettings({ ...settings, width: v })}
         defaultValue={512} 
         min={256} 
         max={768}
@@ -157,7 +156,7 @@ export default function Form(): JSX.Element {
         height
        </Typography.Text>
        <Slider 
-        onChange={(v) => setPrompt({ ...prompt, height: v })}
+        onChange={(v) => setSettings({ ...settings, height: v })}
         defaultValue={512} 
         min={256} 
         max={768}
@@ -168,7 +167,7 @@ export default function Form(): JSX.Element {
         Batch Count
        </Typography.Text>
        <Slider
-        onChange={(v) => setPrompt({ ...prompt, batch: v })}
+        onChange={(v) => setSettings({ ...settings, batch: v })}
         defaultValue={1} 
         min={1} 
         max={5}
@@ -179,7 +178,7 @@ export default function Form(): JSX.Element {
         CFG Scale
        </Typography.Text>
        <Slider 
-        onChange={(v) => setPrompt({ ...prompt, cfg: v })}
+        onChange={(v) => setSettings({ ...settings, cfg: v })}
         defaultValue={7} 
         min={1} 
         max={30} 
